@@ -12,10 +12,10 @@
 	target="_blank"
 	rel="noopener noreferrer"
 	download
-	class={paperState.isReadingSummary
-		? 'font-semibold text-black'
-		: aiConversationState.selectedPapersIDList.includes(paperState.paper['extractedID']) == true
-			? 'group/title font-semibold text-emerald-600 transition-all duration-300 ease-in-out'
+	class={aiConversationState.selectedPapersIDList.includes(paperState.paper['extractedID']) == true
+		? 'group/title font-semibold text-emerald-600 transition-all duration-300 ease-in-out'
+		: paperState.isReadingSummary
+			? 'font-semibold text-black'
 			: 'group/title font-semibold text-zinc-500 transition-all duration-300 ease-in-out group-hover:text-black'}
 >
 	<span class={'decoration-zinc-400 decoration-1 underline-offset-4 hover:underline'}>

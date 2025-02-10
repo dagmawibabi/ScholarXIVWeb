@@ -34,10 +34,10 @@
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="no-scrollbar group" onclick={() => selectPaper()}>
 	<div
-		class={paperState.isReadingSummary == true
-			? 'no-scrollbar relative flex cursor-pointer flex-col overflow-scroll rounded-xl border border-black bg-white py-3 text-black drop-shadow-xl transition-all duration-300 ease-in-out'
-			: aiConversationState.selectedPapersIDList.includes(paper.extractedID) == true
-				? 'no-scrollbar relative flex cursor-pointer flex-col overflow-scroll rounded-xl border border-emerald-500 bg-white py-3 text-black drop-shadow-xl transition-all duration-300 ease-in-out'
+		class={aiConversationState.selectedPapersIDList.includes(paper.extractedID) == true
+			? 'no-scrollbar relative flex cursor-pointer flex-col overflow-scroll rounded-xl border border-emerald-500 bg-white py-3 text-black drop-shadow-xl transition-all duration-300 ease-in-out'
+			: paperState.isReadingSummary == true
+				? 'no-scrollbar relative flex cursor-pointer flex-col overflow-scroll rounded-xl border border-black bg-white py-3 text-black drop-shadow-xl transition-all duration-300 ease-in-out'
 				: 'no-scrollbar relative flex cursor-pointer flex-col overflow-scroll rounded-xl border border-zinc-300 bg-white py-3 text-zinc-600 drop-shadow-xl transition-all duration-300 ease-in-out group-hover:border-black group-hover:text-black'}
 	>
 		<div class="px-4">

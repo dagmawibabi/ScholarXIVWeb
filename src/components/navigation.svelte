@@ -34,40 +34,5 @@
 				<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
 			</div>
 		{/if}
-
-		<!-- Profile -->
-		<div class="pr-2 pt-2">
-			<!-- {$session.data?.session.id} -->
-			<!-- {#if $session.data} -->
-			<!-- <DropdownMenu.Root>
-				<DropdownMenu.Trigger>
-					<ProfileAvatar session={$session} />
-				</DropdownMenu.Trigger>
-				<DropdownMenu.Content>
-					<DropdownMenu.Group> -->
-			<!-- Profile -->
-			<!-- <DropdownMenu.Item
-							><ProfileAvatar session={$session} fullInfo={true} /></DropdownMenu.Item
-						>
-
-						<div class="py-1">
-							<Separator />
-						</div> -->
-			<!-- Logout -->
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<!-- svelte-ignore a11y-no-static-element-interactions -->
-			<!-- <DropdownMenu.Item
-							><div
-								class="w-full text-center hover:text-red-500 cursor-pointer"
-								on:click={() => handleLogout()}
-							>
-								Logout
-							</div></DropdownMenu.Item
-						>
-					</DropdownMenu.Group>
-				</DropdownMenu.Content>
-			</DropdownMenu.Root> -->
-			<!-- {/if} -->
-		</div>
 	</div>
 </div>

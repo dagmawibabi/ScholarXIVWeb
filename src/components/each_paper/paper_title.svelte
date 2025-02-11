@@ -14,7 +14,7 @@
 	download
 	class={aiConversationState.selectedPapersIDList.includes(paperState.paper['extractedID']) == true
 		? 'group/title font-semibold text-emerald-600 transition-all duration-300 ease-in-out'
-		: paperState.isReadingSummary
+		: paperState.isFirstInList == true || paperState.isReadingSummary
 			? 'font-semibold text-black'
 			: 'group/title font-semibold text-zinc-500 transition-all duration-300 ease-in-out group-hover:text-black'}
 >

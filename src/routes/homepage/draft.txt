@@ -1,0 +1,103 @@
+<div class="flex flex-col gap-y-4 pb-3 pt-6">
+		{#if inputState.advancedSearch == true}
+			{#if inputState.lastSearch != ''}
+				<div class="flex justify-between">
+					<div class="pl-2">
+						Results for
+						<span class="font-semibold italic">
+							"{inputState.lastSearch}"
+						</span>
+					</div>
+					<div class="flex items-center gap-x-2">
+						{#if inputState.startIndex > 0}
+							<!-- svelte-ignore a11y_click_events_have_key_events -->
+							<!-- svelte-ignore a11y_no_static_element_interactions -->
+							<div
+								class="rounded-lg border px-3 py-1"
+								onclick={() => {
+									inputState.startIndex -= 1;
+									searchPaper();
+								}}
+							>
+								Back
+							</div>
+						{/if}
+						{inputState.startIndex + 1}
+						<!-- svelte-ignore a11y_click_events_have_key_events -->
+						<!-- svelte-ignore a11y_no_static_element_interactions -->
+						<div
+							class="rounded-lg border px-3 py-1"
+							onclick={() => {
+								inputState.startIndex += 1;
+								searchPaper();
+							}}
+						>
+							Next
+						</div>
+					</div>
+				</div>
+			{/if}
+			{#each paperListState.paperList as eachPaper}
+				<EachPaper paper={eachPaper} />
+			{/each}
+		{:else if paperListState.paperList.length == 0 && inputState.isSearching == false}
+			<!-- NO RESULTS -->
+			<div class="pl-2">
+				Searched for
+				<span class="font-semibold italic">
+					"{inputState.lastSearch}"
+				</span>
+				but found no results.
+			</div>
+		{:else if paperListState.paperList.length < 1 && inputState.isSearching == true}
+			<!-- SEARCHING... -->
+			{#if inputState.searchContent != '' && inputState.isSearching}
+				<div class="pl-2">
+					Searching for
+					<span class="font-semibold italic">
+						"{inputState.searchContent}"
+					</span>
+				</div>
+			{/if}
+			<FeedSkeletons />
+		{:else}
+			<div class="flex justify-between">
+				<div class="pl-2">
+					Results for
+					<span class="font-semibold italic">
+						"{randomPaper}"
+					</span>
+				</div>
+				<div class="flex items-center gap-x-2">
+					{#if inputState.startIndex > 0}
+						<!-- svelte-ignore a11y_click_events_have_key_events -->
+						<!-- svelte-ignore a11y_no_static_element_interactions -->
+						<div
+							class="rounded-lg border px-3 py-1"
+							onclick={() => {
+								inputState.startIndex -= 1;
+								searchPaper();
+							}}
+						>
+							Back
+						</div>
+					{/if}
+					{inputState.startIndex + 1}
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<div
+						class="rounded-lg border px-3 py-1"
+						onclick={() => {
+							inputState.startIndex += 1;
+							searchPaper();
+						}}
+					>
+						Next
+					</div>
+				</div>
+			</div>
+			{#each paperListState.paperList as eachPaper}
+				<EachPaper paper={eachPaper} />
+			{/each}
+		{/if}
+	</div>

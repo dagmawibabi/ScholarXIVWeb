@@ -15,7 +15,7 @@
 	// Function to handle download
 	async function handleDownload(paper: any) {
 		// Show Toast
-		toast.success(`Downloading will start soon...`);
+		toast.loading(`Downloading paper...`);
 
 		// Download
 		const response = await axios({
@@ -76,7 +76,7 @@
 	<!-- LIKE -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<div
-		class="flex w-fit items-center gap-x-2 rounded-2xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-200 hover:text-black"
+		class="flex w-fit items-center gap-x-2 rounded-2xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 		onclick={(e) => {
 			paperState.toggleLike();
 			e.stopPropagation();
@@ -95,7 +95,7 @@
 	<!-- COMMENT -->
 	<a href="/comments/paper/{paperState.paper['extractedID']}">
 		<div
-			class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-200 hover:text-black"
+			class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 		>
 			<MessageCircle size={15} />
 			<span class="flex pl-1"> 0 </span>
@@ -105,7 +105,7 @@
 	<!-- SUMMARY -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<div
-		class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-200 hover:text-black"
+		class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 		onclick={(e) => {
 			paperState.toggleSummary();
 			e.stopPropagation();
@@ -118,7 +118,7 @@
 	<!-- DOWNLOAD -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<div
-		class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-200 hover:text-black"
+		class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 		onclick={() => handleDownload(paperState.paper)}
 	>
 		<Download size={15} />
@@ -129,7 +129,7 @@
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<div
-		class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-200 hover:text-black"
+		class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 		onclick={(e) => {
 			paperState.toggleBookmark();
 			e.stopPropagation();
@@ -151,7 +151,7 @@
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger>
 				<div
-					class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-200 hover:text-black"
+					class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 				>
 					<Link2 size={15} />
 					<span class="hidden md:flex lg:flex xl:flex 2xl:flex"> Copy </span>

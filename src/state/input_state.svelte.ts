@@ -3,5 +3,20 @@ export const inputState = $state({
 	isSearching: true,
 	hasSearched: false,
 	lastSearch: '',
-	aiInput: ''
+	aiInput: '',
+	advancedSearch: false,
+	id: '',
+	ti: '',
+	au: '',
+	abs: '',
+	co: '',
+	jr: '',
+	cat: '',
+	rn: '',
+	sortBy: 'Sort By',
+	sortOrder: 'Sort Order',
+	startIndex: 0,
+	maxResults: 2,
+	statusText: '',
+	statusKeyword: ''
 });

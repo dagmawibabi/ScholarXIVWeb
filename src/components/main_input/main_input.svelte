@@ -1,28 +1,33 @@
 <script lang="ts">
-	import { Search, Sparkles } from 'lucide-svelte';
+	import { Search, Settings2, Sparkles } from 'lucide-svelte';
 	import { inputState } from '../../state/input_state.svelte';
 	import axios from 'axios';
 	import { paperListState } from '../../state/papers_list.svelte';
 	import { Circle } from 'svelte-loading-spinners';
 	import AiChat from '../ai_chat/ai_chat.svelte';
 	import { aiConversationState } from '../../state/ai_conversation_state.svelte';
+	import InputSettings from './input_settings.svelte';
 
 	async function searchPaper() {
-		if (inputState.searchContent.length > 0) {
+		if (inputState.searchContent.trim().length > 0) {
 			inputState.isSearching = true;
+			inputState.statusText = `Searching for `;
+			inputState.lastSearch = inputState.searchContent;
+			inputState.advancedSearch = false;
 			paperListState.paperList = [];
 			const response = await axios.post('/api/search_papers', {
-				startIndex: 0,
-				maxResults: 20,
+				startIndex: inputState.startIndex,
+				maxResults: inputState.maxResults,
 				searchFilterString: {
-					all: inputState.searchContent
+					all: inputState.searchContent.replace(':', '')
 				},
-				sortBy: 'relevance',
-				sortOrder: 'ascending'
+				sortBy: inputState.sortBy == 'Sort By' ? 'relevance' : inputState.sortBy,
+				sortOrder: inputState.sortOrder == 'Sort Order' ? 'ascending' : inputState.sortOrder
 			});
-			inputState.lastSearch = inputState.searchContent;
+			paperListState.paperList = [];
 			paperListState.paperList = response.data;
 			inputState.isSearching = false;
+			inputState.statusText = `Results for `;
 		}
 	}
 
@@ -62,20 +67,25 @@
 				{/if}
 			</div>
 
-			<!-- AI Toggle -->
+			<!-- Settings and AI Toggle -->
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
-			<div class="m-auto pr-1">
-				<div
-					class="cursor-pointer rounded-full p-2 text-zinc-600 hover:bg-zinc-200 hover:text-black"
-					onclick={() => (isAIMode = !isAIMode)}
-				>
-					<!-- svelte-ignore a11y_no_static_element_interactions -->
-					{#if isAIMode}
+			<div class="m-auto flex items-center pr-1">
+				<InputSettings {isAIMode} />
+				{#if isAIMode}
+					<div
+						class="cursor-pointer rounded-full p-2 text-zinc-600 hover:bg-zinc-100 hover:text-black"
+						onclick={() => (isAIMode = !isAIMode)}
+					>
 						<Search size={14} />
-					{:else}
+					</div>
+				{:else}
+					<div
+						class="cursor-pointer rounded-full p-2 text-zinc-600 hover:bg-zinc-100 hover:text-black"
+						onclick={() => (isAIMode = !isAIMode)}
+					>
 						<Sparkles size={14} />
-					{/if}
-				</div>
+					</div>
+				{/if}
 			</div>
 
 			<!-- Search Button -->

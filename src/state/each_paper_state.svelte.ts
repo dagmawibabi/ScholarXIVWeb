@@ -8,6 +8,7 @@ export class EachPaper {
 	isLiked: boolean = $state(false);
 	isBookmarked: boolean = $state(false);
 	isReadingSummary: boolean = $state(false);
+	isFirstInList: boolean = $state(false);
 
 	constructor(paper: any) {
 		this.paper = paper;
@@ -15,7 +16,8 @@ export class EachPaper {
 		this.commentCount = this.paper['commentCount'] || 0;
 		this.isLiked = this.paper['isLiked'];
 		this.isBookmarked = this.paper['isBookmarked'];
-		this.isReadingSummary = paperListState.paperList[0]['extractedID'] == this.paper['extractedID'];
+		// this.isReadingSummary = paperListState.paperList[0]['extractedID'] == this.paper['extractedID'];
+		this.isFirstInList = paperListState.paperList[0]['extractedID'] == this.paper['extractedID'];
 	}
 
 	toggleLike() {
@@ -33,6 +35,10 @@ export class EachPaper {
 	}
 
 	toggleSummary() {
-		this.isReadingSummary = !this.isReadingSummary;
+		if (this.isFirstInList) {
+			this.isFirstInList = false;
+		} else {
+			this.isReadingSummary = !this.isReadingSummary;
+		}
 	}
 }

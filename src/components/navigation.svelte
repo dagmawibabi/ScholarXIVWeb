@@ -21,17 +21,17 @@
 		<!-- Navigation Buttons -->
 		{#if $page.url.pathname == '/homepage'}
 			<!-- Bookmarks -->
-			<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
+			<!-- <NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} /> -->
 		{:else if $page.url.pathname == '/bookmarks_page'}
 			<!-- Discover -->
-			<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
+			<!-- <NavigationButtons icon={Compass} size={18} link={'/homepage'} /> -->
 		{:else}
 			<div class="flex gap-x-2">
 				<!-- Discover -->
-				<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
+				<!-- <NavigationButtons icon={Compass} size={18} link={'/homepage'} /> -->
 
 				<!-- Bookmarks -->
-				<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
+				<!-- <NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} /> -->
 			</div>
 		{/if}
 	</div>

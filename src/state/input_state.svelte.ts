@@ -16,7 +16,7 @@ export const inputState = $state({
 	sortBy: 'Sort By',
 	sortOrder: 'Sort Order',
 	startIndex: 0,
-	maxResults: 2,
+	maxResults: 10,
 	statusText: '',
 	statusKeyword: ''
 });

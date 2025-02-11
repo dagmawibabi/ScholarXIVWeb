@@ -129,7 +129,9 @@
 		<div class="flex w-full gap-x-2 pt-3">
 			{#if inputState.isSearching == true}
 				<div>
-					<div class="flex h-full w-20 items-center justify-center border-l">
+					<div
+						class="flex h-full w-36 items-center justify-center rounded-lg border border-zinc-400 bg-zinc-100 px-5 py-1"
+					>
 						<Circle size="22" color="#000000" duration="1s" />
 					</div>
 				</div>
@@ -137,7 +139,7 @@
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<div
-					class="w-fit cursor-pointer rounded-lg border border-zinc-400 bg-zinc-100 px-5 py-1 hover:border-zinc-500 hover:bg-black hover:text-white"
+					class="w-fit cursor-pointer rounded-lg border border-zinc-400 bg-zinc-100 px-6 py-1 hover:border-zinc-500 hover:bg-black hover:text-white"
 					onclick={() => advancedSearchPaper()}
 				>
 					Search Paper

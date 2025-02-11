@@ -7,6 +7,7 @@
 	import AiChat from '../ai_chat/ai_chat.svelte';
 	import { aiConversationState } from '../../state/ai_conversation_state.svelte';
 	import InputSettings from './input_settings.svelte';
+	import SelectedPapers from '../ai_chat/selected_papers.svelte';
 
 	async function searchPaper() {
 		if (inputState.searchContent.trim().length > 0) {
@@ -31,12 +32,49 @@
 		}
 	}
 
+	async function chatWithAI() {
+		if (inputState.aiInput.trim().length > 0) {
+			aiConversationState.conversation.push({
+				from: 'user',
+				content: inputState.aiInput
+			});
+			inputState.aiInput = '';
+			aiConversationState.conversation.push({
+				from: 'system',
+				content: 'thinking ...'
+			});
+			const response = await axios.post('/api/ai_chat', {
+				apiKey: 'AIzaSyAsdBWjTneDaBvrP0bba4R6eYIaKzmg3Bc',
+				selectedPapers: JSON.stringify(aiConversationState.selectedPapersList),
+				conversation: JSON.stringify(aiConversationState.conversation),
+				prompt:
+					aiConversationState.conversation[aiConversationState.conversation.length - 2].content
+			});
+			aiConversationState.conversation.pop();
+			aiConversationState.conversation.push({
+				from: 'ai',
+				content: response.data
+			});
+		}
+	}
+
+	function handleEnter(event: KeyboardEvent) {
+		if (event.key === 'Enter') {
+			event.preventDefault();
+			if (isAIMode == true) {
+				chatWithAI();
+			} else {
+				searchPaper();
+			}
+		}
+	}
+
 	let isAIMode = $state(false);
 </script>
 
 <div
 	class="no-scrollbar absolute bottom-0 left-0 right-0 m-auto h-fit w-full rounded-tl-xl rounded-tr-xl border-t border-zinc-200 pb-4
-	backdrop-blur-md md:w-2/3 lg:w-2/4 xl:w-2/5 2xl:w-2/5"
+	backdrop-blur-lg md:w-2/3 lg:w-2/4 xl:w-2/5 2xl:w-2/5"
 >
 	{#if isAIMode == true}
 		<AiChat />
@@ -55,6 +93,7 @@
 						class="w-full bg-white pb-1 outline-none"
 						placeholder={`Chat with ${aiConversationState.currentModel.name} ...`}
 						bind:value={inputState.aiInput}
+						onkeydown={handleEnter}
 					/>
 				{:else}
 					<Search size={18} class="text-zinc-400" />
@@ -63,6 +102,7 @@
 						class="w-full bg-white pb-1 outline-none"
 						placeholder="Search ..."
 						bind:value={inputState.searchContent}
+						onkeydown={handleEnter}
 					/>
 				{/if}
 			</div>
@@ -100,7 +140,11 @@
 				<div
 					class="group/search group-hover:bg-zinc-200"
 					onclick={async () => {
-						await searchPaper();
+						if (isAIMode == true) {
+							await chatWithAI();
+						} else {
+							await searchPaper();
+						}
 					}}
 				>
 					<div

@@ -30,7 +30,7 @@
 			content: 'thinking ...'
 		});
 		const response = await axios.post('/api/ai_chat', {
-			apiKey: 'AIzaSyAsdBWjTneDaBvrP0bba4R6eYIaKzmg3Bc',
+			apiKey: '',
 			selectedPapers: JSON.stringify(aiConversationState.selectedPapersList),
 			conversation: JSON.stringify(aiConversationState.conversation),
 			prompt: promptContent

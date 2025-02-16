@@ -1,5 +1,5 @@
 import { createAuthClient } from 'better-auth/svelte';
-import { env } from '$env/dynamic/private';
+import { env } from '$env/static/private';
 
 export const authClient = createAuthClient({
 	baseURL: env.BETTER_AUTH_URL!

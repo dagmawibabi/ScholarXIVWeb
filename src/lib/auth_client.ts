@@ -1,6 +1,9 @@
 import { createAuthClient } from 'better-auth/svelte';
+import dotenv from 'dotenv';
+dotenv.config();
+
 export const authClient = createAuthClient({
-	baseURL: 'http://localhost:5173'
+	baseURL: process.env.BETTER_AUTH_URL!
 });
 
 export const {

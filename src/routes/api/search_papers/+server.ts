@@ -1,6 +1,6 @@
 // import axios from 'axios';
 import { json } from '@sveltejs/kit';
-import { arxivAPICall } from '../utility/search_and_clean_papers';
+import { arxivAPICall } from '../utils/search_and_clean_papers';
 
 export async function POST({ request }) {
 	const { startIndex, maxResults, searchFilterString, sortBy, sortOrder } = await request.json();

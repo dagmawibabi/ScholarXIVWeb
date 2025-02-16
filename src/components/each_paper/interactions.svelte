@@ -40,9 +40,10 @@
 	function copyToClipboard(type: string, paper: any) {
 		let whatToCopy: string;
 
+		// All: () => `ID: ${paper['id']}\nPublished Date: ${readableTime}\n\nTitle: ${paper['title']}\n\nAuthors: ${paper['authors'].join(', ')}\n\nSummary: ${paper['summary']}\n\nPDF Link: ${paper['pdfLink']}`,
+
 		const copyMap: any = {
-			All: () =>
-				`ID: ${paper['id']}\nPublished Date: ${readableTime}\n\nTitle: ${paper['title']}\n\nAuthors: ${paper['authors'].join(', ')}\n\nSummary: ${paper['summary']}\n\nPDF Link: ${paper['pdfLink']}`,
+			All: () => `Paper: ${paper['id']} — ${paper['title']}...`,
 			ID: () => paper['id'],
 			Title: () => paper['title'],
 			Authors: () => paper['authors'].join(', '),

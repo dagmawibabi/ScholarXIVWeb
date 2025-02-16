@@ -14,7 +14,7 @@
 		<Avatar.Root class="border border-zinc-300 drop-shadow-md hover:shadow-lg">
 			<Avatar.Image src={session.data?.user.image} />
 			<Avatar.Fallback>
-				{session.data?.user.name[0]}
+				{session.data?.user.name[0].toString().toUpperCase()}
 			</Avatar.Fallback>
 		</Avatar.Root>
 		{#if fullInfo == true}

@@ -22,7 +22,7 @@
 	<Card.Root class="w-full max-w-sm">
 		<Card.Header>
 			<Card.Title class="text-xl">Login</Card.Title>
-			<Card.Description>Login usign your email and password</Card.Description>
+			<Card.Description>Login using your email and password</Card.Description>
 		</Card.Header>
 		<Card.Content>
 			<div class="grid gap-4">

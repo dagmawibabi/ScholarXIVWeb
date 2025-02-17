@@ -87,11 +87,21 @@
 			e.stopPropagation();
 		}}
 	>
-		<Heart
-			size={15}
-			fill={paperState.isLiked == true ? 'red' : 'white'}
-			class={paperState.isLiked == true ? 'text-red-500' : ''}
-		/>
+		<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+			<Heart
+				size={15}
+				fill={paperState.isLiked == true ? 'red' : 'white'}
+				class={paperState.isLiked == true ? 'text-red-500' : ''}
+			/>
+		</div>
+		<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+			<Heart
+				size={18}
+				fill={paperState.isLiked == true ? 'red' : 'white'}
+				class={paperState.isLiked == true ? 'text-red-500' : ''}
+			/>
+		</div>
+
 		<span class="flex pb-[2px]">
 			{paperState.likeCount}
 		</span>

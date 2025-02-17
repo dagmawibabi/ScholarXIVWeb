@@ -4,9 +4,13 @@ import { json } from '@sveltejs/kit';
 
 const papers = mongoDB.collection('papers');
 const bookmarks = mongoDB.collection('bookmarks');
+import { addValuesToPapers } from '../utils/add_values_to_papers';
+import { getSession } from '../utils/session_manager';
 
-export async function POST({ request }) {
-	const { userID } = await request.json();
+export async function GET({ request }) {
+	// Get User ID
+	const session = await getSession(request);
+	const userID = session?.user.id;
 
 	// Get User Bookmarks
 	const result = await bookmarks.find({ userID: userID }).toArray();
@@ -21,11 +25,9 @@ export async function POST({ request }) {
 		eachBookmarks.isBookmarked = true;
 	}
 
-	// console.log(rawBookmarks[0]);
-
 	// Add dynamic values
-	// const bookmarkedPapers = await addDynamicValuesToPapers(c, rawBookmarks);
+	const bookmarkedPapersWithValues = await addValuesToPapers(rawBookmarks, userID);
 
 	// Response
-	return json(rawBookmarks);
+	return json(bookmarkedPapersWithValues);
 }

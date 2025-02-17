@@ -5,7 +5,7 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import NavigationButtons from './navigation_buttons.svelte';
 	import { Separator } from '$lib/components/ui/separator';
-	import { Bookmark, Compass } from 'lucide-svelte';
+	import { Bookmark, Compass, Heart } from 'lucide-svelte';
 
 	import { page } from '$app/state';
 	import { authClient } from '$lib/auth_client';
@@ -23,11 +23,26 @@
 		<!-- Navigation Buttons -->
 		<div>
 			{#if page.url.pathname == '/homepage'}
-				<!-- Bookmarks -->
-				<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
+				<div class="flex">
+					<!-- Liked Papers -->
+					<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
+					<!-- Bookmarks -->
+					<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
+				</div>
 			{:else if page.url.pathname == '/bookmarks_page'}
-				<!-- Discover -->
-				<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
+				<div class="flex">
+					<!-- Discover -->
+					<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
+					<!-- Liked Papers -->
+					<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
+				</div>
+			{:else if page.url.pathname == '/liked_papers_page'}
+				<div class="flex">
+					<!-- Discover -->
+					<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
+					<!-- Bookmarks -->
+					<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
+				</div>
 			{:else}
 				<div class="flex gap-x-2">
 					<!-- Discover -->
@@ -35,6 +50,9 @@
 
 					<!-- Bookmarks -->
 					<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
+
+					<!-- Liked Papers -->
+					<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
 				</div>
 			{/if}
 		</div>

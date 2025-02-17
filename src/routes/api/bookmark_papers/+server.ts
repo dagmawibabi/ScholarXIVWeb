@@ -1,12 +1,16 @@
-// import axios from 'axios';
 import { mongoDB } from '$db/db';
 import { json } from '@sveltejs/kit';
+import { getSession } from '../utils/session_manager';
 
 const papers = mongoDB.collection('papers');
 const bookmarks = mongoDB.collection('bookmarks');
 
 export async function POST({ request }) {
-	const { userID, paperID } = await request.json();
+	// Get User ID
+	const session = await getSession(request);
+	const userID = session?.user.id;
+
+	const { paperID } = await request.json();
 
 	// New bookmark obj
 	const newBookmark = {
@@ -25,7 +29,7 @@ export async function POST({ request }) {
 	}
 
 	// Send back all bookmarks
-	const bookmarkedPapers = await getBookmarkedPapers(userID);
+	const bookmarkedPapers = await getBookmarkedPapers(userID!);
 
 	// Response
 	return json(bookmarkedPapers);

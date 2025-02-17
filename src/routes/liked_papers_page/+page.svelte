@@ -10,13 +10,14 @@
 	import { Toaster } from 'svelte-sonner';
 	import { aiConversationState } from '../../state/ai_conversation_state.svelte';
 
-	paperListState.bookmarkList = [];
-	async function getBookmarkedPapers() {
-		paperListState.isGettingBookmarkedPapers = true;
-		const response = await fetch('/api/get_bookmarked_papers');
+	const session = authClient.useSession();
+
+	async function getLikedPapers() {
+		paperListState.isGettingLikedPapers = true;
+		const response = await fetch('/api/get_liked_papers');
 		const data = await response.json();
-		paperListState.bookmarkList = data;
-		paperListState.isGettingBookmarkedPapers = false;
+		paperListState.likedPapersList = data;
+		paperListState.isGettingLikedPapers = false;
 	}
 
 	let isAllSelected = $state(false);
@@ -26,7 +27,7 @@
 		if (isAllSelected == false) {
 			aiConversationState.selectedPapersList = [];
 			aiConversationState.selectedPapersIDList = [];
-			paperListState.bookmarkList.forEach((eachPaper) => {
+			paperListState.likedPapersList.forEach((eachPaper) => {
 				aiConversationState.selectedPapersList.push(eachPaper);
 				aiConversationState.selectedPapersIDList.push(eachPaper['extractedID']);
 			});
@@ -38,7 +39,7 @@
 		isAllSelected = !isAllSelected;
 	}
 
-	getBookmarkedPapers();
+	getLikedPapers();
 </script>
 
 <div class="m-auto w-full px-3 md:w-2/3 lg:w-2/4 lg:px-0 xl:w-2/5 xl:px-0 2xl:w-2/5 2xl:px-0">
@@ -52,7 +53,7 @@
 			<!-- Status -->
 			<div class="pl-2">
 				<span class="cursor-pointer font-semibold underline-offset-4 hover:underline">
-					Bookmarked Papers
+					Liked Papers
 				</span>
 			</div>
 
@@ -71,10 +72,10 @@
 
 		<!-- Bookmark List -->
 		<div class="flex flex-col gap-y-4 pb-3 pt-3">
-			{#if paperListState.isGettingBookmarkedPapers == true}
+			{#if paperListState.isGettingLikedPapers == true}
 				<FeedSkeletons />
 			{:else}
-				{#each paperListState.bookmarkList as eachPaper}
+				{#each paperListState.likedPapersList as eachPaper}
 					<EachPaper paper={eachPaper} />
 				{/each}
 			{/if}
@@ -86,7 +87,7 @@
 
 	<!-- Paper Count -->
 	<div class="text-center text-xs">
-		<span> Showing {paperListState.bookmarkList.length} Papers.</span>
+		<span> Showing {paperListState.likedPapersList.length} Papers.</span>
 	</div>
 
 	<!-- Footer -->

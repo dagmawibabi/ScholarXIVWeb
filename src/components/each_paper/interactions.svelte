@@ -83,7 +83,7 @@
 	<div
 		class="flex w-fit items-center gap-x-2 rounded-2xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 		onclick={(e) => {
-			paperState.toggleLike();
+			paperState.toggleLike($session.data?.user.id, paperState.paper.extractedID);
 			e.stopPropagation();
 		}}
 	>
@@ -93,7 +93,7 @@
 			class={paperState.isLiked == true ? 'text-red-500' : ''}
 		/>
 		<span class="flex pb-[2px]">
-			{paperState.likes}
+			{paperState.likeCount}
 		</span>
 	</div>
 

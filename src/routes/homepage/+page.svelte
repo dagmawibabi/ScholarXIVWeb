@@ -27,8 +27,7 @@
 					all: inputState.searchContent.replace(':', '')
 				},
 				sortBy: inputState.sortBy == 'Sort By' ? 'relevance' : inputState.sortBy,
-				sortOrder: inputState.sortOrder == 'Sort Order' ? 'ascending' : inputState.sortOrder,
-				userID: $session.data?.user.id
+				sortOrder: inputState.sortOrder == 'Sort Order' ? 'ascending' : inputState.sortOrder
 			});
 			paperListState.paperList = [];
 			paperListState.paperList = response.data;
@@ -54,8 +53,7 @@
 					all: inputState.searchContent
 				},
 				sortBy: inputState.sortBy == 'Sort By' ? 'relevance' : inputState.sortBy,
-				sortOrder: inputState.sortOrder == 'Sort Order' ? 'ascending' : inputState.sortOrder,
-				userID: $session.data?.user.id
+				sortOrder: inputState.sortOrder == 'Sort Order' ? 'ascending' : inputState.sortOrder
 			});
 
 			paperListState.paperList = [];
@@ -86,8 +84,6 @@
 
 		isAllSelected = !isAllSelected;
 	}
-
-	const session = authClient.useSession();
 
 	randomSearch();
 </script>

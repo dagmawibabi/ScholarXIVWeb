@@ -19,10 +19,10 @@
 	>
 		<Title />
 	</div>
-	<Card.Root class="mx-auto max-w-md">
+	<Card.Root class="w-full max-w-sm">
 		<Card.Header>
-			<Card.Title class="text-2xl">Login</Card.Title>
-			<Card.Description>Enter your email and password to login to your account</Card.Description>
+			<Card.Title class="text-xl">Login</Card.Title>
+			<Card.Description>Login usign your email and password</Card.Description>
 		</Card.Header>
 		<Card.Content>
 			<div class="grid gap-4">

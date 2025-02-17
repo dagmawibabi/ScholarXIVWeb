@@ -23,7 +23,7 @@
 	</div>
 	<Card.Root class="mx-auto max-w-sm">
 		<Card.Header>
-			<Card.Title class="text-2xl">Create Account</Card.Title>
+			<Card.Title class="text-xl">Create Account</Card.Title>
 			<Card.Description>Fill in your details to create an account</Card.Description>
 		</Card.Header>
 		<Card.Content>

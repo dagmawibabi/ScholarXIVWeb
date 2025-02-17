@@ -4,6 +4,7 @@
 	import { toast } from 'svelte-sonner';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Bookmark, Download, Heart, Link2, MessageCircle, Scroll } from 'lucide-svelte';
+	import { authClient } from '$lib/auth_client';
 
 	// Props
 	let { paperState } = $props();
@@ -65,6 +66,9 @@
 			description: whatToCopy
 		});
 	}
+
+	// async function bookmarkPaper() {}
+	const session = authClient.useSession();
 </script>
 
 <!-- Interactions -->
@@ -132,7 +136,7 @@
 	<div
 		class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 		onclick={(e) => {
-			paperState.toggleBookmark();
+			paperState.toggleBookmark($session.data?.user.id, paperState.paper.extractedID);
 			e.stopPropagation();
 		}}
 	>

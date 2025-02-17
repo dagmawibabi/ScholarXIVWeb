@@ -7,6 +7,7 @@
 	import Summary from './summary.svelte';
 	import { EachPaper } from '../../state/each_paper_state.svelte';
 	import { paperListState } from '../../state/papers_list.svelte';
+	import { page } from '$app/state';
 
 	// Props
 	let { paper } = $props();
@@ -36,9 +37,11 @@
 	<div
 		class={aiConversationState.selectedPapersIDList.includes(paper.extractedID) == true
 			? 'no-scrollbar relative flex cursor-pointer flex-col overflow-scroll rounded-xl border border-emerald-500 bg-white py-3 text-black shadow-emerald-500 drop-shadow-xl transition-all duration-300 ease-in-out'
-			: paperState.isFirstInList == true || paperState.isReadingSummary == true
+			: paperState.isFirstInList == true && page.url.pathname != '/bookmarks_page'
 				? 'no-scrollbar relative flex cursor-pointer flex-col overflow-scroll rounded-xl border border-black bg-white py-3 text-black drop-shadow-xl transition-all duration-300 ease-in-out'
-				: 'no-scrollbar relative flex cursor-pointer flex-col overflow-scroll rounded-xl border border-zinc-300 bg-white py-3 text-zinc-600 drop-shadow-xl transition-all duration-300 ease-in-out group-hover:border-black group-hover:text-black'}
+				: paperState.isReadingSummary == true
+					? 'no-scrollbar relative flex cursor-pointer flex-col overflow-scroll rounded-xl border border-black bg-white py-3 text-black drop-shadow-xl transition-all duration-300 ease-in-out'
+					: 'no-scrollbar relative flex cursor-pointer flex-col overflow-scroll rounded-xl border border-zinc-300 bg-white py-3 text-zinc-600 drop-shadow-xl transition-all duration-300 ease-in-out group-hover:border-black group-hover:text-black'}
 	>
 		<div class="px-4">
 			<!-- Published Date and ID -->

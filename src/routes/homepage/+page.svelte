@@ -12,9 +12,10 @@
 	import * as Select from '$lib/components/ui/select/index.js';
 	import { suggestedPaperTitles } from '$lib/constants';
 	import { aiConversationState } from '../../state/ai_conversation_state.svelte';
+	import { authClient } from '$lib/auth_client';
 
-	async function searchPaper() {
-		if (inputState.searchContent.trim().length > 0) {
+	async function searchPaper(onPurpose: boolean = false) {
+		if (inputState.searchContent.trim().length > 0 || onPurpose == true) {
 			inputState.isSearching = true;
 			inputState.statusText = `Searching for `;
 			inputState.advancedSearch = false;
@@ -26,7 +27,8 @@
 					all: inputState.searchContent.replace(':', '')
 				},
 				sortBy: inputState.sortBy == 'Sort By' ? 'relevance' : inputState.sortBy,
-				sortOrder: inputState.sortOrder == 'Sort Order' ? 'ascending' : inputState.sortOrder
+				sortOrder: inputState.sortOrder == 'Sort Order' ? 'ascending' : inputState.sortOrder,
+				userID: $session.data?.user.id
 			});
 			paperListState.paperList = [];
 			paperListState.paperList = response.data;
@@ -37,32 +39,38 @@
 	}
 
 	inputState.searchContent = '';
-	inputState.lastSearch = '';
-	async function randomSearch() {
-		inputState.statusText = `Recommended keyword `;
-		inputState.searchContent =
-			suggestedPaperTitles[Math.floor(Math.random() * suggestedPaperTitles.length)];
-		inputState.lastSearch = inputState.searchContent;
-		inputState.isSearching = true;
-		const response = await axios.post('/api/search_papers', {
-			startIndex: inputState.startIndex,
-			maxResults: inputState.maxResults,
-			searchFilterString: {
-				all: inputState.searchContent
-			},
-			sortBy: inputState.sortBy == 'Sort By' ? 'relevance' : inputState.sortBy,
-			sortOrder: inputState.sortOrder == 'Sort Order' ? 'ascending' : inputState.sortOrder
-		});
+	// inputState.lastSearch = '';
+	async function randomSearch(onPurpose: boolean = false) {
+		if (inputState.lastSearch == '' || onPurpose == true) {
+			inputState.statusText = `Recommended keyword `;
+			inputState.searchContent =
+				suggestedPaperTitles[Math.floor(Math.random() * suggestedPaperTitles.length)];
+			inputState.lastSearch = inputState.searchContent;
+			inputState.isSearching = true;
+			const response = await axios.post('/api/search_papers', {
+				startIndex: inputState.startIndex,
+				maxResults: inputState.maxResults,
+				searchFilterString: {
+					all: inputState.searchContent
+				},
+				sortBy: inputState.sortBy == 'Sort By' ? 'relevance' : inputState.sortBy,
+				sortOrder: inputState.sortOrder == 'Sort Order' ? 'ascending' : inputState.sortOrder,
+				userID: $session.data?.user.id
+			});
 
-		paperListState.paperList = [];
-		paperListState.paperList = response.data;
-		inputState.lastSearch = inputState.searchContent;
-		inputState.isSearching = false;
+			paperListState.paperList = [];
+			paperListState.paperList = response.data;
+			inputState.lastSearch = inputState.searchContent;
+			inputState.isSearching = false;
+		}
 	}
 
 	let isfeedControlsOn = $state(false);
 
 	let isAllSelected = $state(false);
+	aiConversationState.selectedPapersList = [];
+	aiConversationState.selectedPapersIDList = [];
+
 	function selectAll() {
 		if (isAllSelected == false) {
 			aiConversationState.selectedPapersList = [];
@@ -79,9 +87,9 @@
 		isAllSelected = !isAllSelected;
 	}
 
-	onMount(async () => {
-		await randomSearch();
-	});
+	const session = authClient.useSession();
+
+	randomSearch();
 </script>
 
 <div class="m-auto w-full px-3 md:w-2/3 lg:w-2/4 lg:px-0 xl:w-2/5 xl:px-0 2xl:w-2/5 2xl:px-0">
@@ -99,7 +107,7 @@
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<span
 					class="cursor-pointer font-semibold italic underline-offset-4 hover:underline"
-					onclick={() => randomSearch()}
+					onclick={() => randomSearch(true)}
 				>
 					"{inputState.lastSearch}"
 				</span>
@@ -135,7 +143,11 @@
 			>
 				<div class="flex items-center gap-x-2">
 					<!-- SORT BY-->
-					<Select.Root type="single" bind:value={inputState.sortBy} onValueChange={searchPaper}>
+					<Select.Root
+						type="single"
+						bind:value={inputState.sortBy}
+						onValueChange={() => searchPaper(true)}
+					>
 						<Select.Trigger
 							class="w-[170px] rounded-full border border-zinc-200 text-sm hover:border-zinc-400 focus:outline-none focus:ring-0"
 							>{inputState.sortBy}</Select.Trigger
@@ -148,7 +160,11 @@
 					</Select.Root>
 
 					<!-- SORT ORDER -->
-					<Select.Root type="single" bind:value={inputState.sortOrder} onValueChange={searchPaper}>
+					<Select.Root
+						type="single"
+						bind:value={inputState.sortOrder}
+						onValueChange={() => searchPaper(true)}
+					>
 						<Select.Trigger
 							class="w-[130px] rounded-full border border-zinc-200 text-sm hover:border-zinc-400 focus:outline-none focus:ring-0"
 							>{inputState.sortOrder}</Select.Trigger
@@ -172,7 +188,7 @@
 							onclick={async () => {
 								if (inputState.startIndex > 0) {
 									inputState.startIndex -= 1;
-									await searchPaper();
+									await searchPaper(true);
 								}
 							}}
 						>
@@ -185,7 +201,7 @@
 							class="cursor-pointer rounded-full p-1 hover:bg-zinc-100"
 							onclick={async () => {
 								inputState.startIndex += 1;
-								await searchPaper();
+								await searchPaper(true);
 							}}
 						>
 							<ChevronRight size={20} />
@@ -203,7 +219,7 @@
 							onclick={async () => {
 								if (inputState.maxResults > 2) {
 									inputState.maxResults -= 1;
-									await searchPaper();
+									await searchPaper(true);
 								}
 							}}
 						>
@@ -239,11 +255,43 @@
 	</div>
 
 	<!-- Space -->
-	<div class="h-16"></div>
+	<div class="h-24"></div>
 
 	<!-- Paper Count -->
 	<div class="text-center text-xs">
-		<span> Showing {paperListState.paperList.length} Papers.</span>
+		<!-- Result Count -->
+		<div class="pb-4">Showing {paperListState.paperList.length} Papers.</div>
+
+		<!-- PAGINATION -->
+		<div
+			class="mx-auto flex w-fit items-center gap-x-1 rounded-full border border-zinc-200 bg-white px-1 py-1 text-sm hover:border-zinc-400"
+		>
+			<!-- svelte-ignore a11y_click_events_have_key_events -->
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<div
+				class="cursor-pointer rounded-full p-1 hover:bg-zinc-100"
+				onclick={async () => {
+					if (inputState.startIndex > 0) {
+						inputState.startIndex -= 1;
+						await searchPaper(true);
+					}
+				}}
+			>
+				<ChevronLeft size={20} />
+			</div>
+			Page {inputState.startIndex + 1}
+			<!-- svelte-ignore a11y_click_events_have_key_events -->
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<div
+				class="cursor-pointer rounded-full p-1 hover:bg-zinc-100"
+				onclick={async () => {
+					inputState.startIndex += 1;
+					await searchPaper(true);
+				}}
+			>
+				<ChevronRight size={20} />
+			</div>
+		</div>
 	</div>
 
 	<!-- Footer -->

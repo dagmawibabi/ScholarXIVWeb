@@ -2,11 +2,11 @@
 	let props = $props();
 </script>
 
-<div class="pt-3">
-	<div class="p-2 hover:bg-zinc-200 rounded-full w-fit h-fit">
-		<a href={props.link}>
+<a href={props.link}>
+	<div class="pt-3">
+		<div class="h-fit w-fit rounded-full p-2 hover:bg-zinc-200">
 			<!-- <Compass size={18} /> -->
 			<props.icon size={props.size} />
-		</a>
+		</div>
 	</div>
-</div>
+</a>

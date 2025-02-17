@@ -1,3 +1,5 @@
 export const paperListState = $state({
-	paperList: []
+	paperList: [],
+	bookmarkList: [],
+	isGettingBookmarkedPapers: false
 });

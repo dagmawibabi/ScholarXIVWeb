@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import { Scroll } from 'lucide-svelte';
 
 	// Props
@@ -10,7 +11,9 @@
 	<div
 		class={paperState.isReadingSummary == true
 			? 'pt-3 text-sm transition-all duration-300 ease-in-out'
-			: paperState.isFirstInList == true && paperState.isReadingSummary == false
+			: paperState.isFirstInList == true &&
+				  paperState.isReadingSummary == false &&
+				  page.url.pathname != '/bookmarks_page'
 				? 'hidden pt-3 text-sm transition-all duration-300 ease-in-out md:flex lg:flex xl:flex 2xl:flex'
 				: 'hidden pt-3 text-sm transition-all duration-300 ease-in-out'}
 	>

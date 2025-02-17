@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const suggestedPaperTitles: any[] = [
-	// 'attention is all you need', 'acid',
-	// 	'a theory of justice',
-	// 	'augmented',
-	// 	'behavioral',
+	'attention is all you need',
+	'acid',
+	'a theory of justice',
+	'augmented',
+	'behavioral',
 	'books',
-	'black hole'
-	// 	'brain',
+	'black hole',
+	'brain'
 ];
 // 	'cats',
 // 	'computer',

@@ -58,9 +58,9 @@
 					class="w-full"
 					onclick={() => {
 						isSigningUp = !isSigningUp;
-						handleSignUp(firstName.trim(), lastName.trim(), email.trim(), password.trim());
 					}}
 				>
+					<!-- handleSignUp(firstName.trim(), lastName.trim(), email.trim(), password.trim()); -->
 					{#if isSigningUp === true}
 						<Circle size="22" color="#ffffff" duration="1s" />
 					{:else}

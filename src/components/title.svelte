@@ -1,6 +1,4 @@
-<div
-	class="flex flex-col items-center px-2 md:items-start lg:items-start xl:items-start 2xl:items-start"
->
+<div class="flex flex-col px-2">
 	<span class="text-xl font-semibold"> ScholarXIV </span>
 	<span>
 		Explore academic papers

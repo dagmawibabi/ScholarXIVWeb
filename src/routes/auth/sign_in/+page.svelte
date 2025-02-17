@@ -14,7 +14,9 @@
 </script>
 
 <div class="flex h-screen flex-col items-center justify-center">
-	<div class="pb-4">
+	<div
+		class="w-full pb-4 text-center md:w-fit md:text-start lg:w-fit lg:text-start xl:w-fit xl:text-start 2xl:w-fit 2xl:text-start"
+	>
 		<Title />
 	</div>
 	<Card.Root class="mx-auto max-w-md">

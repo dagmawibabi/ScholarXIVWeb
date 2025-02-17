@@ -112,7 +112,12 @@
 		<div
 			class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 		>
-			<MessageCircle size={15} />
+			<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+				<MessageCircle size={15} />
+			</div>
+			<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+				<MessageCircle size={18} />
+			</div>
 			<span class="flex pl-1"> 0 </span>
 		</div>
 	</a>
@@ -126,7 +131,13 @@
 			e.stopPropagation();
 		}}
 	>
-		<Scroll size={14} />
+		<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+			<Scroll size={14} />
+		</div>
+		<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+			<Scroll size={17} />
+		</div>
+
 		<span class="hidden md:flex lg:flex xl:flex 2xl:flex"> Summary </span>
 	</div>
 
@@ -136,7 +147,12 @@
 		class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 		onclick={() => handleDownload(paperState.paper)}
 	>
-		<Download size={15} />
+		<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+			<Download size={15} />
+		</div>
+		<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+			<Download size={18} />
+		</div>
 		<span class="hidden md:flex lg:flex xl:flex 2xl:flex"> Download </span>
 	</div>
 
@@ -150,11 +166,20 @@
 			e.stopPropagation();
 		}}
 	>
-		<Bookmark
-			size={15}
-			fill={paperState.isBookmarked == true ? 'lightGreen' : 'white'}
-			class={paperState.isBookmarked == true ? 'text-emerald-500' : ''}
-		/>
+		<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+			<Bookmark
+				size={15}
+				fill={paperState.isBookmarked == true ? 'lightGreen' : 'white'}
+				class={paperState.isBookmarked == true ? 'text-emerald-500' : ''}
+			/>
+		</div>
+		<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+			<Bookmark
+				size={18}
+				fill={paperState.isBookmarked == true ? 'lightGreen' : 'white'}
+				class={paperState.isBookmarked == true ? 'text-emerald-500' : ''}
+			/>
+		</div>
 
 		<span class="hidden md:flex lg:flex xl:flex 2xl:flex">
 			{paperState.isBookmarked ? 'Unbookmark' : 'Bookmark'}
@@ -168,7 +193,12 @@
 				<div
 					class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 				>
-					<Link2 size={15} />
+					<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+						<Link2 size={15} />
+					</div>
+					<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+						<Link2 size={18} />
+					</div>
 					<span class="hidden md:flex lg:flex xl:flex 2xl:flex"> Copy </span>
 				</div>
 			</DropdownMenu.Trigger>

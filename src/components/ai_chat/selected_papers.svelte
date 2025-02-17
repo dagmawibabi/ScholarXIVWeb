@@ -16,7 +16,13 @@
 <Popover.Root>
 	<Popover.Trigger class="bg-transparent outline-none"
 		><div class="flex cursor-pointer items-center gap-x-2 text-xs text-zinc-500 hover:text-black">
-			<Layers size={14} />
+			<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+				<Layers size={14} />
+			</div>
+			<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+				<Layers size={16} />
+			</div>
+
 			<span>{aiConversationState.selectedPapersList.length} papers selected</span>
 		</div></Popover.Trigger
 	>

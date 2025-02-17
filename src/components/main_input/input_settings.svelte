@@ -10,9 +10,19 @@
 	<Dialog.Trigger class="outline-none">
 		<div class="cursor-pointer rounded-full p-2 text-zinc-600 hover:bg-zinc-100 hover:text-black">
 			{#if isAIMode}
-				<SlidersHorizontal size={17} />
+				<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+					<SlidersHorizontal size={17} />
+				</div>
+				<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+					<SlidersHorizontal size={19} />
+				</div>
 			{:else}
-				<ScanText size={17} />
+				<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+					<ScanText size={17} />
+				</div>
+				<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+					<ScanText size={19} />
+				</div>
 			{/if}
 		</div>
 	</Dialog.Trigger>

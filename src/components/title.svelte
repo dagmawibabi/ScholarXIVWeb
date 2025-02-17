@@ -1,7 +1,11 @@
-<div class="flex flex-col px-2">
+<div
+	class="flex flex-col items-center px-2 md:items-start lg:items-start xl:items-start 2xl:items-start"
+>
 	<span class="text-xl font-semibold"> ScholarXIV </span>
 	<span>
 		Explore academic papers
-		<span class="hidden md:flex lg:flex xl:flex 2xl:flex"> from the arXiv repository. </span>
+		<span class="hidden md:inline lg:inline xl:inline 2xl:inline">
+			from the arXiv repository.
+		</span>
 	</span>
 </div>

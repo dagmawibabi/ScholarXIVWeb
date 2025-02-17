@@ -56,23 +56,50 @@
 
 		<!-- Clear / Minimize Conversation -->
 		<div class="flex cursor-pointer items-center gap-2 pr-2 text-zinc-500">
-			<Trash2
-				size={14}
-				class="hover:text-black"
-				onclick={() => (aiConversationState.conversation = [])}
-			/>
+			<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+				<Trash2
+					size={14}
+					class="hover:text-black"
+					onclick={() => (aiConversationState.conversation = [])}
+				/>
+			</div>
+			<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+				<Trash2
+					size={16}
+					class="hover:text-black"
+					onclick={() => (aiConversationState.conversation = [])}
+				/>
+			</div>
 			{#if minimizeConversation == true}
-				<Maximize
-					size={14}
-					class="hover:text-black"
-					onclick={() => (minimizeConversation = !minimizeConversation)}
-				/>
+				<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+					<Maximize
+						size={14}
+						class="hover:text-black"
+						onclick={() => (minimizeConversation = !minimizeConversation)}
+					/>
+				</div>
+				<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+					<Maximize
+						size={16}
+						class="hover:text-black"
+						onclick={() => (minimizeConversation = !minimizeConversation)}
+					/>
+				</div>
 			{:else}
-				<Minimize
-					size={14}
-					class="hover:text-black"
-					onclick={() => (minimizeConversation = !minimizeConversation)}
-				/>
+				<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+					<Minimize
+						size={14}
+						class="hover:text-black"
+						onclick={() => (minimizeConversation = !minimizeConversation)}
+					/>
+				</div>
+				<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+					<Minimize
+						size={16}
+						class="hover:text-black"
+						onclick={() => (minimizeConversation = !minimizeConversation)}
+					/>
+				</div>
 			{/if}
 		</div>
 	</div>

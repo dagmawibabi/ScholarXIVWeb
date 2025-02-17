@@ -98,7 +98,9 @@
 		<div class="flex justify-between pb-2 pr-2 pt-6">
 			<!-- Status -->
 			<div class="pl-2">
-				{inputState.statusText}
+				<span class="hidden md:inline lg:inline xl:inline 2xl:inline">
+					{inputState.statusText}
+				</span>
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<span

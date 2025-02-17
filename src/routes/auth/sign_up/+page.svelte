@@ -16,7 +16,7 @@
 </script>
 
 <div class="flex h-screen flex-col items-center justify-center">
-	<div class="pb-4">
+	<div class="w-full pb-4">
 		<Title />
 	</div>
 	<Card.Root class="mx-auto max-w-sm">

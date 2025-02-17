@@ -116,14 +116,24 @@
 						class="cursor-pointer rounded-full p-2 text-zinc-600 hover:bg-zinc-100 hover:text-black"
 						onclick={() => (isAIMode = !isAIMode)}
 					>
-						<Search size={14} />
+						<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+							<Search size={14} />
+						</div>
+						<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+							<Search size={17} />
+						</div>
 					</div>
 				{:else}
 					<div
 						class="cursor-pointer rounded-full p-2 text-zinc-600 hover:bg-zinc-100 hover:text-black"
 						onclick={() => (isAIMode = !isAIMode)}
 					>
-						<Sparkles size={14} />
+						<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+							<Sparkles size={14} />
+						</div>
+						<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+							<Sparkles size={17} />
+						</div>
 					</div>
 				{/if}
 			</div>

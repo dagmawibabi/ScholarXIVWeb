@@ -17,78 +17,82 @@
 <div class="flex items-center justify-between">
 	<!-- Title -->
 	<Title />
+	{$session}
+	{$session.data}
 
 	<!-- Navigation Buttons and Profile -->
-	<div class="flex items-center justify-center gap-x-3">
-		<!-- Navigation Buttons -->
-		<div>
-			{#if page.url.pathname == '/homepage'}
-				<div class="flex">
-					<!-- Liked Papers -->
-					<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
-					<!-- Bookmarks -->
-					<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
-				</div>
-			{:else if page.url.pathname == '/bookmarks_page'}
-				<div class="flex">
-					<!-- Discover -->
-					<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
-					<!-- Liked Papers -->
-					<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
-				</div>
-			{:else if page.url.pathname == '/liked_papers_page'}
-				<div class="flex">
-					<!-- Discover -->
-					<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
-					<!-- Bookmarks -->
-					<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
-				</div>
-			{:else}
-				<div class="flex gap-x-2">
-					<!-- Discover -->
-					<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
+	{#if $session.data}
+		<div class="flex items-center justify-center gap-x-3">
+			<!-- Navigation Buttons -->
+			<div>
+				{#if page.url.pathname == '/homepage'}
+					<div class="flex">
+						<!-- Liked Papers -->
+						<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
+						<!-- Bookmarks -->
+						<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
+					</div>
+				{:else if page.url.pathname == '/bookmarks_page'}
+					<div class="flex">
+						<!-- Discover -->
+						<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
+						<!-- Liked Papers -->
+						<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
+					</div>
+				{:else if page.url.pathname == '/liked_papers_page'}
+					<div class="flex">
+						<!-- Discover -->
+						<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
+						<!-- Bookmarks -->
+						<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
+					</div>
+				{:else}
+					<div class="flex gap-x-2">
+						<!-- Discover -->
+						<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
 
-					<!-- Bookmarks -->
-					<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
+						<!-- Bookmarks -->
+						<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
 
-					<!-- Liked Papers -->
-					<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
-				</div>
-			{/if}
-		</div>
+						<!-- Liked Papers -->
+						<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
+					</div>
+				{/if}
+			</div>
 
-		<!-- Profile -->
-		<div class="pr-2 pt-2">
-			{#if $session.data}
-				<DropdownMenu.Root>
-					<DropdownMenu.Trigger>
-						<ProfileAvatar session={$session} />
-					</DropdownMenu.Trigger>
-					<DropdownMenu.Content>
-						<DropdownMenu.Group>
-							<!-- Profile -->
-							<DropdownMenu.Item
-								><ProfileAvatar session={$session} fullInfo={true} /></DropdownMenu.Item
-							>
-
-							<div class="py-1">
-								<Separator />
-							</div>
-							<!-- Logout -->
-							<!-- svelte-ignore a11y-click-events-have-key-events -->
-							<!-- svelte-ignore a11y-no-static-element-interactions -->
-							<DropdownMenu.Item
-								><div
-									class="w-full cursor-pointer text-center hover:text-red-500"
-									onclick={() => handleSignOut()}
+			<!-- Profile -->
+			<div class="pr-2 pt-2">
+				{#if $session.data}
+					<DropdownMenu.Root>
+						<DropdownMenu.Trigger>
+							<ProfileAvatar session={$session} />
+						</DropdownMenu.Trigger>
+						<DropdownMenu.Content>
+							<DropdownMenu.Group>
+								<!-- Profile -->
+								<DropdownMenu.Item
+									><ProfileAvatar session={$session} fullInfo={true} /></DropdownMenu.Item
 								>
-									Logout
-								</div></DropdownMenu.Item
-							>
-						</DropdownMenu.Group>
-					</DropdownMenu.Content>
-				</DropdownMenu.Root>
-			{/if}
+
+								<div class="py-1">
+									<Separator />
+								</div>
+								<!-- Logout -->
+								<!-- svelte-ignore a11y-click-events-have-key-events -->
+								<!-- svelte-ignore a11y-no-static-element-interactions -->
+								<DropdownMenu.Item
+									><div
+										class="w-full cursor-pointer text-center hover:text-red-500"
+										onclick={() => handleSignOut()}
+									>
+										Logout
+									</div></DropdownMenu.Item
+								>
+							</DropdownMenu.Group>
+						</DropdownMenu.Content>
+					</DropdownMenu.Root>
+				{/if}
+			</div>
 		</div>
-	</div>
+	{/if}
 </div>

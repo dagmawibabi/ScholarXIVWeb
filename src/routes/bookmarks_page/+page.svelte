@@ -50,20 +50,30 @@
 		<!-- STATUS TEXTS AND FEED AND SELECT ALL-->
 		<div class="flex justify-between pb-2 pr-2 pt-6">
 			<!-- Status -->
-			<div class="pl-2">
-				<span class="cursor-pointer font-semibold underline-offset-4 hover:underline">
-					Bookmarked Papers
-				</span>
-			</div>
+			<div class="pl-2 font-semibold">Bookmarked Papers</div>
 
+			<!-- Select All -->
 			<div class="flex items-center gap-x-2">
-				<!-- Select All -->
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div class="rounded-full p-1 hover:bg-zinc-100" onclick={() => selectAll()}>
+				<div
+					class={aiConversationState.selectedPapersList.length > 0
+						? 'flex h-7 items-center rounded-full px-1 hover:bg-zinc-100'
+						: 'flex h-7 items-center rounded-full p-1 hover:bg-zinc-100'}
+					onclick={() => selectAll()}
+				>
+					{#if aiConversationState.selectedPapersList.length > 0}
+						<div class="px-1 pb-1 font-semibold text-emerald-500">
+							{aiConversationState.selectedPapersList.length}
+						</div>
+					{/if}
 					<CircleCheckBig
 						size={18}
-						class={isAllSelected == true ? 'cursor-pointer text-emerald-500' : 'cursor-pointer'}
+						class={aiConversationState.selectedPapersList.length ==
+							paperListState.bookmarkList.length &&
+						paperListState.isGettingBookmarkedPapers == false
+							? 'cursor-pointer text-emerald-500'
+							: 'cursor-pointer'}
 					/>
 				</div>
 			</div>

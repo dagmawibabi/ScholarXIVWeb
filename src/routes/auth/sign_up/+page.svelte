@@ -19,7 +19,7 @@
 	<div
 		class="w-full pb-4 text-center md:w-fit md:text-start lg:w-fit lg:text-start xl:w-fit xl:text-start 2xl:w-fit 2xl:text-start"
 	>
-		<Title />
+		<Title useAsHome={false} />
 	</div>
 	<Card.Root class="mx-auto max-w-sm">
 		<Card.Header>

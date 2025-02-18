@@ -15,7 +15,11 @@
 <!-- Selected Papers -->
 <Popover.Root>
 	<Popover.Trigger class="bg-transparent outline-none"
-		><div class="flex cursor-pointer items-center gap-x-2 text-xs text-zinc-500 hover:text-black">
+		><div
+			class={aiConversationState.selectedPapersList.length > 0
+				? 'flex cursor-pointer items-center gap-x-2 text-xs text-emerald-600 hover:text-black'
+				: 'flex cursor-pointer items-center gap-x-2 text-xs text-zinc-500 hover:text-black'}
+		>
 			<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
 				<Layers size={14} />
 			</div>

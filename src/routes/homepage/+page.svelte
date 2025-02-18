@@ -8,7 +8,14 @@
 	import { Toaster } from 'svelte-sonner';
 	import { paperListState } from '../../state/papers_list.svelte';
 	import { inputState } from '../../state/input_state.svelte';
-	import { ChevronLeft, ChevronRight, CircleCheckBig, Settings, Settings2 } from 'lucide-svelte';
+	import {
+		ChevronLeft,
+		ChevronRight,
+		CircleCheckBig,
+		Library,
+		Settings,
+		Settings2
+	} from 'lucide-svelte';
 	import * as Select from '$lib/components/ui/select/index.js';
 	import { suggestedPaperTitles } from '$lib/constants';
 	import { aiConversationState } from '../../state/ai_conversation_state.svelte';
@@ -86,11 +93,15 @@
 	}
 
 	randomSearch();
+
+	const session = authClient.getSession();
 </script>
 
 <div class="m-auto w-full px-3 md:w-2/3 lg:w-2/4 lg:px-0 xl:w-2/5 xl:px-0 2xl:w-2/5 2xl:px-0">
 	<!-- Title and Profile -->
 	<Navigation />
+
+	{session}
 
 	<!-- Paper List -->
 	<div>
@@ -111,6 +122,7 @@
 				</span>
 			</div>
 
+			<!-- Feed Control Toggle and Select All -->
 			<div class="flex items-center gap-x-2">
 				<!-- Feed Control -->
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -125,10 +137,23 @@
 				<!-- Select All -->
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div class="rounded-full p-1 hover:bg-zinc-100" onclick={() => selectAll()}>
+				<div
+					class={aiConversationState.selectedPapersList.length > 0
+						? 'flex h-7 items-center rounded-full px-1 hover:bg-zinc-100'
+						: 'flex h-7 items-center rounded-full p-1 hover:bg-zinc-100'}
+					onclick={() => selectAll()}
+				>
+					{#if aiConversationState.selectedPapersList.length > 0}
+						<div class="px-1 pb-1 font-semibold text-emerald-500">
+							{aiConversationState.selectedPapersList.length}
+						</div>
+					{/if}
 					<CircleCheckBig
 						size={18}
-						class={isAllSelected == true ? 'cursor-pointer text-emerald-500' : 'cursor-pointer'}
+						class={aiConversationState.selectedPapersList.length ==
+							paperListState.paperList.length && inputState.isSearching == false
+							? 'cursor-pointer text-emerald-500'
+							: 'cursor-pointer'}
 					/>
 				</div>
 			</div>
@@ -137,7 +162,7 @@
 		<!-- FEED CONTROL -->
 		{#if isfeedControlsOn}
 			<div
-				class="mx-auto flex w-fit flex-col items-center justify-center gap-x-2 gap-y-2 rounded-3xl border border-zinc-200 bg-zinc-50 px-[6px] py-1 md:flex-row md:rounded-full lg:flex-row lg:rounded-full xl:flex-row xl:rounded-full 2xl:flex-row 2xl:rounded-full"
+				class="mx-auto flex w-fit flex-col items-center justify-center gap-x-2 gap-y-2 rounded-3xl border-zinc-200 bg-zinc-50 px-[6px] py-1 md:flex-row md:rounded-full lg:flex-row lg:rounded-full xl:flex-row xl:rounded-full 2xl:flex-row 2xl:rounded-full"
 			>
 				<div class="flex items-center gap-x-2">
 					<!-- SORT BY-->

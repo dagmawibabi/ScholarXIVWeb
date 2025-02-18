@@ -19,6 +19,7 @@
 	<Title />
 	{$session}
 	{$session.data}
+	{$session.data?.user.name}
 
 	<!-- Navigation Buttons and Profile -->
 	{#if $session.data}

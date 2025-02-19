@@ -109,7 +109,7 @@
 		</div>
 
 		<!-- COMMENT -->
-		<a href="/comments/paper/{paperState.paper['extractedID']}">
+		<a href="/comments/papers/{paperState.paper['extractedID']}">
 			<div
 				class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 			>

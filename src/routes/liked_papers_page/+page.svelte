@@ -24,21 +24,6 @@
 	let isAllSelected = $state(false);
 	aiConversationState.selectedPapersList = [];
 	aiConversationState.selectedPapersIDList = [];
-	function selectAll() {
-		if (isAllSelected == false) {
-			aiConversationState.selectedPapersList = [];
-			aiConversationState.selectedPapersIDList = [];
-			paperListState.likedPapersList.forEach((eachPaper) => {
-				aiConversationState.selectedPapersList.push(eachPaper);
-				aiConversationState.selectedPapersIDList.push(eachPaper['extractedID']);
-			});
-		} else {
-			aiConversationState.selectedPapersList = [];
-			aiConversationState.selectedPapersIDList = [];
-		}
-
-		isAllSelected = !isAllSelected;
-	}
 
 	getLikedPapers();
 </script>

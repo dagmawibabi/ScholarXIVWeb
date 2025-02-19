@@ -17,50 +17,56 @@
 <div class="flex items-center justify-between">
 	<!-- Title -->
 	<Title />
-	{$session}
-	{$session.data}
-	{$session.data?.user.name}
 
 	<!-- Navigation Buttons and Profile -->
-	{#if $session.data}
-		<div class="flex items-center justify-center gap-x-3">
-			<!-- Navigation Buttons -->
-			<div>
-				{#if page.url.pathname == '/homepage'}
-					<div class="flex">
-						<!-- Liked Papers -->
-						<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
-						<!-- Bookmarks -->
-						<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
-					</div>
-				{:else if page.url.pathname == '/bookmarks_page'}
-					<div class="flex">
-						<!-- Discover -->
-						<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
-						<!-- Liked Papers -->
-						<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
-					</div>
-				{:else if page.url.pathname == '/liked_papers_page'}
-					<div class="flex">
-						<!-- Discover -->
-						<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
-						<!-- Bookmarks -->
-						<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
-					</div>
-				{:else}
-					<div class="flex gap-x-2">
-						<!-- Discover -->
-						<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
 
-						<!-- Bookmarks -->
-						<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
-
+	<div class="flex items-center justify-center gap-x-3">
+		<!-- Navigation Buttons -->
+		<div>
+			{#if page.url.pathname == '/homepage'}
+				{#if $session.data}
+					<div class="flex">
 						<!-- Liked Papers -->
 						<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
+						<!-- Bookmarks -->
+						<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
 					</div>
 				{/if}
-			</div>
+			{:else if page.url.pathname == '/bookmarks_page'}
+				<div class="flex">
+					{#if $session.data}
+						<!-- Discover -->
+						<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
+					{/if}
+					<!-- Liked Papers -->
+					<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
+				</div>
+			{:else if page.url.pathname == '/liked_papers_page'}
+				<div class="flex">
+					{#if $session.data}
+						<!-- Discover -->
+						<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
+					{/if}
+					<!-- Bookmarks -->
+					<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
+				</div>
+			{:else}
+				<div class="flex gap-x-2">
+					{#if $session.data}
+						<!-- Discover -->
+						<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
+					{/if}
 
+					<!-- Bookmarks -->
+					<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
+
+					<!-- Liked Papers -->
+					<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
+				</div>
+			{/if}
+		</div>
+
+		{#if $session.data}
 			<!-- Profile -->
 			<div class="pr-2 pt-2">
 				{#if $session.data}
@@ -94,6 +100,6 @@
 					</DropdownMenu.Root>
 				{/if}
 			</div>
-		</div>
-	{/if}
+		{/if}
+	</div>
 </div>

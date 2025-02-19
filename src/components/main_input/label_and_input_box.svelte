@@ -14,5 +14,7 @@
 		/>
 	</div>
 
-	<div class="line-clamp-1 w-24 pl-2 text-left text-sm">{label}</div>
+	{#if label}
+		<div class="line-clamp-1 w-24 pl-2 text-left text-sm">{label}</div>
+	{/if}
 </div>

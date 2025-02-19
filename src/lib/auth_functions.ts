@@ -1,5 +1,6 @@
 import { goto } from '$app/navigation';
 import { signIn, signUp, signOut, forgetPassword, resetPassword } from './auth_client';
+import { geminiAPIKeyPlugin } from './gemini_apikey_plugin';
 
 export const handleSignIn = async (email: string, password: string) => {
 	await signIn.email(
@@ -83,4 +84,8 @@ export const handleResetPassword = async (password: string) => {
 			}
 		}
 	});
+};
+
+export const handleGeminiAPIKey = async () => {
+	await geminiAPIKeyPlugin();
 };

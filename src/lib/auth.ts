@@ -13,10 +13,12 @@
 import { betterAuth } from 'better-auth';
 import { mongodbAdapter } from 'better-auth/adapters/mongodb';
 import { mongoDB } from '$db/db';
+import { geminiAPIKeyPlugin } from './gemini_apikey_plugin';
 
 export const auth = betterAuth({
 	database: mongodbAdapter(mongoDB),
 	emailAndPassword: {
 		enabled: true
-	}
+	},
+	plugins: [geminiAPIKeyPlugin()]
 });

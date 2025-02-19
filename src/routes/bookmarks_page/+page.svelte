@@ -9,6 +9,7 @@
 	import Footer from '../../components/footer.svelte';
 	import { Toaster } from 'svelte-sonner';
 	import { aiConversationState } from '../../state/ai_conversation_state.svelte';
+	import SelectAll from '../../components/select_all.svelte';
 
 	paperListState.bookmarkList = [];
 	async function getBookmarkedPapers() {
@@ -22,23 +23,10 @@
 	let isAllSelected = $state(false);
 	aiConversationState.selectedPapersList = [];
 	aiConversationState.selectedPapersIDList = [];
-	function selectAll() {
-		if (isAllSelected == false) {
-			aiConversationState.selectedPapersList = [];
-			aiConversationState.selectedPapersIDList = [];
-			paperListState.bookmarkList.forEach((eachPaper) => {
-				aiConversationState.selectedPapersList.push(eachPaper);
-				aiConversationState.selectedPapersIDList.push(eachPaper['extractedID']);
-			});
-		} else {
-			aiConversationState.selectedPapersList = [];
-			aiConversationState.selectedPapersIDList = [];
-		}
 
-		isAllSelected = !isAllSelected;
-	}
-
-	getBookmarkedPapers();
+	try {
+		getBookmarkedPapers();
+	} catch (error) {}
 </script>
 
 <div class="m-auto w-full px-3 md:w-2/3 lg:w-2/4 lg:px-0 xl:w-2/5 xl:px-0 2xl:w-2/5 2xl:px-0">
@@ -53,30 +41,10 @@
 			<div class="pl-2 font-semibold">Bookmarked Papers</div>
 
 			<!-- Select All -->
-			<div class="flex items-center gap-x-2">
-				<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div
-					class={aiConversationState.selectedPapersList.length > 0
-						? 'flex h-7 items-center rounded-full px-1 hover:bg-zinc-100'
-						: 'flex h-7 items-center rounded-full p-1 hover:bg-zinc-100'}
-					onclick={() => selectAll()}
-				>
-					{#if aiConversationState.selectedPapersList.length > 0}
-						<div class="px-1 pb-1 font-semibold text-emerald-500">
-							{aiConversationState.selectedPapersList.length}
-						</div>
-					{/if}
-					<CircleCheckBig
-						size={18}
-						class={aiConversationState.selectedPapersList.length ==
-							paperListState.bookmarkList.length &&
-						paperListState.isGettingBookmarkedPapers == false
-							? 'cursor-pointer text-emerald-500'
-							: 'cursor-pointer'}
-					/>
-				</div>
-			</div>
+			<SelectAll
+				paperList={paperListState.bookmarkList}
+				loadingState={paperListState.isGettingBookmarkedPapers}
+			/>
 		</div>
 
 		<!-- Bookmark List -->

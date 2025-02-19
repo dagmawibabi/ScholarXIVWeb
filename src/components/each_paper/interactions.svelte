@@ -78,50 +78,51 @@
 			text-xs md:justify-start lg:justify-start xl:justify-start 2xl:justify-start
 			"
 >
-	<!-- LIKE -->
-	<!-- svelte-ignore a11y_click_events_have_key_events -->
-	<div
-		class="flex w-fit items-center gap-x-2 rounded-2xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
-		onclick={(e) => {
-			paperState.toggleLike($session.data?.user.id, paperState.paper.extractedID);
-			e.stopPropagation();
-		}}
-	>
-		<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
-			<Heart
-				size={15}
-				fill={paperState.isLiked == true ? 'red' : 'white'}
-				class={paperState.isLiked == true ? 'text-red-500' : ''}
-			/>
-		</div>
-		<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
-			<Heart
-				size={18}
-				fill={paperState.isLiked == true ? 'red' : 'white'}
-				class={paperState.isLiked == true ? 'text-red-500' : ''}
-			/>
-		</div>
-
-		<span class="flex pb-[2px]">
-			{paperState.likeCount}
-		</span>
-	</div>
-
-	<!-- COMMENT -->
-	<a href="/comments/paper/{paperState.paper['extractedID']}">
+	{#if $session.data}
+		<!-- LIKE -->
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<div
-			class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
+			class="flex w-fit items-center gap-x-2 rounded-2xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
+			onclick={(e) => {
+				paperState.toggleLike($session.data?.user.id, paperState.paper.extractedID);
+				e.stopPropagation();
+			}}
 		>
 			<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
-				<MessageCircle size={15} />
+				<Heart
+					size={15}
+					fill={paperState.isLiked == true ? 'red' : 'white'}
+					class={paperState.isLiked == true ? 'text-red-500' : ''}
+				/>
 			</div>
 			<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
-				<MessageCircle size={18} />
+				<Heart
+					size={18}
+					fill={paperState.isLiked == true ? 'red' : 'white'}
+					class={paperState.isLiked == true ? 'text-red-500' : ''}
+				/>
 			</div>
-			<span class="flex pl-1"> 0 </span>
-		</div>
-	</a>
 
+			<span class="flex pb-[2px]">
+				{paperState.likeCount}
+			</span>
+		</div>
+
+		<!-- COMMENT -->
+		<a href="/comments/paper/{paperState.paper['extractedID']}">
+			<div
+				class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
+			>
+				<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+					<MessageCircle size={15} />
+				</div>
+				<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+					<MessageCircle size={18} />
+				</div>
+				<span class="flex pl-1"> 0 </span>
+			</div>
+		</a>
+	{/if}
 	<!-- SUMMARY -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<div
@@ -156,35 +157,37 @@
 		<span class="hidden md:flex lg:flex xl:flex 2xl:flex"> Download </span>
 	</div>
 
-	<!-- BOOKMARK -->
-	<!-- svelte-ignore a11y_click_events_have_key_events -->
-	<!-- svelte-ignore a11y_click_events_have_key_events -->
-	<div
-		class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
-		onclick={(e) => {
-			paperState.toggleBookmark($session.data?.user.id, paperState.paper.extractedID);
-			e.stopPropagation();
-		}}
-	>
-		<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
-			<Bookmark
-				size={15}
-				fill={paperState.isBookmarked == true ? 'lightGreen' : 'white'}
-				class={paperState.isBookmarked == true ? 'text-emerald-500' : ''}
-			/>
-		</div>
-		<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
-			<Bookmark
-				size={18}
-				fill={paperState.isBookmarked == true ? 'lightGreen' : 'white'}
-				class={paperState.isBookmarked == true ? 'text-emerald-500' : ''}
-			/>
-		</div>
+	{#if $session.data}
+		<!-- BOOKMARK -->
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
+		<div
+			class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
+			onclick={(e) => {
+				paperState.toggleBookmark($session.data?.user.id, paperState.paper.extractedID);
+				e.stopPropagation();
+			}}
+		>
+			<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
+				<Bookmark
+					size={15}
+					fill={paperState.isBookmarked == true ? 'lightGreen' : 'white'}
+					class={paperState.isBookmarked == true ? 'text-emerald-500' : ''}
+				/>
+			</div>
+			<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
+				<Bookmark
+					size={18}
+					fill={paperState.isBookmarked == true ? 'lightGreen' : 'white'}
+					class={paperState.isBookmarked == true ? 'text-emerald-500' : ''}
+				/>
+			</div>
 
-		<span class="hidden md:flex lg:flex xl:flex 2xl:flex">
-			{paperState.isBookmarked ? 'Unbookmark' : 'Bookmark'}
-		</span>
-	</div>
+			<span class="hidden md:flex lg:flex xl:flex 2xl:flex">
+				{paperState.isBookmarked ? 'Unbookmark' : 'Bookmark'}
+			</span>
+		</div>
+	{/if}
 
 	<!-- COPY -->
 	<div>
@@ -205,7 +208,7 @@
 			<DropdownMenu.Content>
 				<DropdownMenu.Group>
 					<DropdownMenu.Item
-						class="text-xs"
+						class="cursor-pointer text-xs"
 						onclick={(event) => {
 							event.stopPropagation();
 							copyToClipboard('All', paperState.paper);
@@ -213,42 +216,42 @@
 						}}>All</DropdownMenu.Item
 					>
 					<DropdownMenu.Item
-						class="text-xs"
+						class="cursor-pointer text-xs"
 						onclick={(event) => {
 							event.stopPropagation();
 							copyToClipboard('ID', paperState.paper);
 						}}>ID</DropdownMenu.Item
 					>
 					<DropdownMenu.Item
-						class="text-xs"
+						class="cursor-pointer text-xs"
 						onclick={(event) => {
 							event.stopPropagation();
 							copyToClipboard('Title', paperState.paper);
 						}}>Title</DropdownMenu.Item
 					>
 					<DropdownMenu.Item
-						class="text-xs"
+						class="cursor-pointer text-xs"
 						onclick={(event) => {
 							event.stopPropagation();
 							copyToClipboard('Authors', paperState.paper);
 						}}>Authors</DropdownMenu.Item
 					>
 					<DropdownMenu.Item
-						class="text-xs"
+						class="cursor-pointer text-xs"
 						onclick={(event) => {
 							event.stopPropagation();
 							copyToClipboard('PDF Link', paperState.paper);
 						}}>PDF Link</DropdownMenu.Item
 					>
 					<DropdownMenu.Item
-						class="text-xs"
+						class="cursor-pointer text-xs"
 						onclick={(event) => {
 							event.stopPropagation();
 							copyToClipboard('Summary', paperState.paper);
 						}}>Summary</DropdownMenu.Item
 					>
 					<DropdownMenu.Item
-						class="text-xs"
+						class="cursor-pointer text-xs"
 						onclick={(event) => {
 							event.stopPropagation();
 							copyToClipboard('Published Date', paperState.paper);

@@ -8,6 +8,7 @@
 	import { aiConversationState } from '../../state/ai_conversation_state.svelte';
 	import InputSettings from './input_settings.svelte';
 	import SelectedPapers from '../ai_chat/selected_papers.svelte';
+	import { authClient } from '$lib/auth_client';
 
 	async function searchPaper() {
 		if (inputState.searchContent.trim().length > 0) {
@@ -70,6 +71,8 @@
 	}
 
 	let isAIMode = $state(false);
+
+	let session = authClient.useSession();
 </script>
 
 <div
@@ -123,7 +126,7 @@
 							<Search size={17} />
 						</div>
 					</div>
-				{:else}
+				{:else if $session.data}
 					<div
 						class="cursor-pointer rounded-full p-2 text-zinc-600 hover:bg-zinc-100 hover:text-black"
 						onclick={() => (isAIMode = !isAIMode)}

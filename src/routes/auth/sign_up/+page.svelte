@@ -58,8 +58,9 @@
 				<Button
 					type="button"
 					class="w-full"
-					onclick={() => {
+					onclick={async () => {
 						isSigningUp = !isSigningUp;
+						await handleSignUp(firstName.trim(), lastName.trim(), email.trim(), password.trim());
 					}}
 				>
 					<!-- handleSignUp(firstName.trim(), lastName.trim(), email.trim(), password.trim()); -->

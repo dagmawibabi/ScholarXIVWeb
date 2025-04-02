@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { goto } from '$app/navigation';
 import { signIn, signUp, signOut, forgetPassword, resetPassword } from './auth_client';
-import { geminiAPIKeyPlugin } from './gemini_apikey_plugin';
 
 export const handleSignIn = async (email: string, password: string) => {
 	await signIn.email(
@@ -9,7 +9,7 @@ export const handleSignIn = async (email: string, password: string) => {
 			password: password
 		},
 		{
-			onError(context) {
+			onError(context: any) {
 				console.log(context);
 				// alert(context.error.message);
 			},
@@ -31,7 +31,7 @@ export const handleSignUp = async (
 		password: password,
 		name: `${firstName} ${lastName}`,
 		fetchOptions: {
-			onError(context) {
+			onError(context: any) {
 				alert(context.error.message);
 			},
 			onSuccess() {
@@ -47,7 +47,7 @@ export const handleSignOut = async () => {
 			onSuccess() {
 				goto('/');
 			},
-			onError(context) {
+			onError(context: any) {
 				alert(context.error.message);
 			}
 		}
@@ -65,7 +65,7 @@ export const handleForgetPassword = async (email: string) => {
 				alert('Password reset link sent to your email');
 				goto('/');
 			},
-			onError(context) {
+			onError(context: any) {
 				alert(context.error.message);
 			}
 		}
@@ -79,13 +79,9 @@ export const handleResetPassword = async (password: string) => {
 			onSuccess() {
 				window.location.href = '/auth/sign_in';
 			},
-			onError(context) {
+			onError(context: any) {
 				alert(context.error.message);
 			}
 		}
 	});
-};
-
-export const handleGeminiAPIKey = async () => {
-	await geminiAPIKeyPlugin();
 };

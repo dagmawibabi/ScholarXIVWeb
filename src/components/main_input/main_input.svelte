@@ -121,7 +121,7 @@
 					<Sparkles size={18} class="text-zinc-400" />
 					<input
 						type="text"
-						class="w-full bg-white pb-1 outline-none"
+						class="w-full items-center bg-white pb-0 outline-none md:pb-1 lg:pb-1 xl:pb-1 2xl:pb-1"
 						placeholder={`Chat with ${aiConversationState.currentModel.name} ...`}
 						bind:value={inputState.aiInput}
 						onkeydown={handleEnter}
@@ -130,7 +130,7 @@
 					<MessageCircle size={18} class="text-zinc-400" />
 					<input
 						type="text"
-						class="w-full bg-white pb-1 outline-none"
+						class="w-full items-center bg-white pb-0 outline-none md:pb-1 lg:pb-1 xl:pb-1 2xl:pb-1"
 						placeholder="Comment ..."
 						bind:value={commentState.comment}
 						onkeydown={handleEnter}
@@ -139,7 +139,7 @@
 					<Search size={18} class="text-zinc-400" />
 					<input
 						type="text"
-						class="w-full bg-white pb-1 outline-none"
+						class="w-full items-center bg-white pb-0 outline-none md:pb-1 lg:pb-1 xl:pb-1 2xl:pb-1"
 						placeholder="Search ..."
 						bind:value={inputState.searchContent}
 						onkeydown={handleEnter}

@@ -17,7 +17,7 @@
 				? 'hidden pt-3 text-sm transition-all duration-300 ease-in-out md:flex lg:flex xl:flex 2xl:flex'
 				: 'hidden pt-3 text-sm transition-all duration-300 ease-in-out'}
 	>
-		<div class="pt-3 text-sm transition-all duration-300 ease-in-out">
+		<div class="text-sm transition-all duration-300 ease-in-out">
 			<div
 				class="rounded-lg rounded-bl-md rounded-br-md border border-zinc-300 px-3 pb-3 pt-2 shadow-lg drop-shadow-xl transition-all duration-300 ease-in-out hover:shadow-xl"
 			>

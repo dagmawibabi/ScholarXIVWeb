@@ -10,6 +10,7 @@
 	} from 'lucide-svelte';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { createEventDispatcher } from 'svelte';
+	import * as Avatar from '$lib/components/ui/avatar/index';
 
 	const dispatch = createEventDispatcher();
 
@@ -69,12 +70,42 @@
 	}
 </script>
 
-<div
-	class="inline-flex w-fit cursor-pointer items-center gap-x-3 rounded-xl border border-zinc-300 bg-white pb-1 pr-4 pt-2 text-zinc-800 drop-shadow-md transition-all duration-300 ease-in-out hover:drop-shadow-lg group-hover:border-black group-hover:text-black"
->
-	<div>
+<div class="inline-flex items-start gap-x-3">
+	<DropdownMenu.Root>
+		<DropdownMenu.Trigger>
+			<div class="flex cursor-pointer items-center gap-x-2">
+				<Avatar.Root class="border border-zinc-300 drop-shadow-md hover:shadow-lg">
+					<Avatar.Image src="" />
+					<Avatar.Fallback>
+						{comment.commenter.name.includes(' ')
+							? comment.commenter.name
+									.split(' ')
+									.map((/** @type {any[]} */ n) => n[0])
+									.join('')
+									.toUpperCase()
+							: comment.commenter.name[0].toString().toUpperCase()}
+					</Avatar.Fallback>
+				</Avatar.Root>
+			</div>
+		</DropdownMenu.Trigger>
+		<DropdownMenu.Content>
+			<DropdownMenu.Group>
+				<DropdownMenu.Item
+					class="flex cursor-pointer justify-center gap-1.5 text-xs hover:text-red-500"
+				>
+					<span class="text-xs font-semibold">
+						{comment.commenter.name}
+					</span>
+				</DropdownMenu.Item>
+			</DropdownMenu.Group>
+		</DropdownMenu.Content>
+	</DropdownMenu.Root>
+
+	<div
+		class="w-fit cursor-pointer items-center gap-x-3 rounded-xl border border-zinc-300 bg-white pb-1 pr-4 pt-2 text-zinc-800 drop-shadow-md transition-all duration-300 ease-in-out hover:drop-shadow-lg group-hover:border-black group-hover:text-black"
+	>
 		<!-- Commenter and Date -->
-		<div class="flex gap-x-4 pl-4 text-xs">
+		<div class="flex justify-between gap-x-4 pl-4 text-xs">
 			<div class="flex items-center gap-x-1">
 				<User size={12} />
 				<span class="pb-[1px]">
@@ -87,6 +118,7 @@
 					{readableTime}
 				</span>
 			</div>
+
 			{#if isCurrentUserComment}
 				<DropdownMenu.Root>
 					<DropdownMenu.Trigger>

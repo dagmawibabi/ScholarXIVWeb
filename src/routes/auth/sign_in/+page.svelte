@@ -74,7 +74,7 @@
 					});
 				}}
 			>
-				{#if isLogingInWithGithub === true}
+				{#if isLogingInWithHuggingFace === true}
 					<Circle size="22" color="#ffffff" duration="1s" />
 				{:else}
 					<span class="font-semibold group-hover/huggingface:text-yellow-300">

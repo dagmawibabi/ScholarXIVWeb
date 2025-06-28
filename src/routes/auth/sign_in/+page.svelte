@@ -10,6 +10,7 @@
 
 	let isLogingInWithGithub = $state(false);
 	let isLogingInWithGoogle = $state(false);
+	let isLogingInWithHuggingFace = $state(false);
 </script>
 
 <div class="flex h-screen flex-col items-center justify-center">
@@ -26,7 +27,7 @@
 			<!-- Google Login -->
 			<Button
 				type="button"
-				class="w-full"
+				class="group/google w-full"
 				onclick={async () => {
 					isLogingInWithGoogle = !isLogingInWithGoogle;
 					await authClient.signIn.social({
@@ -38,7 +39,7 @@
 				{#if isLogingInWithGoogle === true}
 					<Circle size="22" color="#ffffff" duration="1s" />
 				{:else}
-					<span class="font-semibold"> Login with Google </span>
+					<span class="font-semibold group-hover/google:text-blue-400"> Login with Google </span>
 				{/if}
 			</Button>
 
@@ -58,6 +59,27 @@
 					<Circle size="22" color="#ffffff" duration="1s" />
 				{:else}
 					<span class="font-semibold"> Login with GitHub </span>
+				{/if}
+			</Button>
+
+			<!-- HuggingFace Login -->
+			<Button
+				type="button"
+				class="group/huggingface w-full"
+				onclick={async () => {
+					isLogingInWithHuggingFace = !isLogingInWithHuggingFace;
+					await authClient.signIn.social({
+						provider: 'huggingface',
+						callbackURL: '/homepage'
+					});
+				}}
+			>
+				{#if isLogingInWithGithub === true}
+					<Circle size="22" color="#ffffff" duration="1s" />
+				{:else}
+					<span class="font-semibold group-hover/huggingface:text-yellow-300">
+						Login with Hugging Face
+					</span>
 				{/if}
 			</Button>
 		</div>

@@ -1,0 +1,22 @@
+export const inputState = $state({
+	searchContent: '',
+	isSearching: true,
+	hasSearched: false,
+	lastSearch: '',
+	aiInput: '',
+	advancedSearch: false,
+	id: '',
+	ti: '',
+	au: '',
+	abs: '',
+	co: '',
+	jr: '',
+	cat: '',
+	rn: '',
+	sortBy: 'Sort By',
+	sortOrder: 'Sort Order',
+	startIndex: 0,
+	maxResults: 10,
+	statusText: '',
+	statusKeyword: ''
+});

@@ -19,6 +19,10 @@ export const auth = betterAuth({
 		huggingface: {
 			clientId: process.env.HUGGINGFACE_CLIENT_ID as string,
 			clientSecret: process.env.HUGGINGFACE_CLIENT_SECRET as string
+		},
+		twitter: {
+			clientId: process.env.TWITTER_CLIENT_ID as string,
+			clientSecret: process.env.TWITTER_CLIENT_SECRET as string
 		}
 	}
 });

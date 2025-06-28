@@ -20,9 +20,9 @@
 
 	<!-- Navigation Buttons and Profile -->
 
-	<div class="flex items-center justify-center gap-x-3">
+	<div class="flex items-start justify-center gap-x-3">
 		<!-- Navigation Buttons -->
-		<div>
+		<div class="flex items-start justify-center gap-x-3">
 			{#if page.url.pathname == '/homepage'}
 				{#if $session.data}
 					<div class="flex">

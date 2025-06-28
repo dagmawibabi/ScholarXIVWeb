@@ -9,7 +9,7 @@
 		<a
 			href="https://github.com/dagmawibabi/ScholarXIVWeb"
 			target="_blank"
-			class="underline underline-offset-4">Star the Project</a
+			class="underline underline-offset-4 hover:text-blue-500">Star the Project</a
 		>
 		✨
 	</span>

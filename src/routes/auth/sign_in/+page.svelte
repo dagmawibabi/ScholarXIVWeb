@@ -15,7 +15,7 @@
 </script>
 
 <div class="flex h-screen flex-col items-center justify-center">
-	<Card.Root class="w-full max-w-sm border-0">
+	<Card.Root class="-mt-20 w-full max-w-sm border-0">
 		<Title useAsHome={false} />
 		<!-- Login -->
 		<Button

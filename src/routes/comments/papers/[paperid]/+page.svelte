@@ -50,7 +50,7 @@
 			<div class="pl-2 font-semibold">Comments</div>
 		</div>
 
-		<!-- Bookmark List -->
+		<!-- Comment List -->
 		<div class="flex flex-col gap-y-4 pb-3 pt-3">
 			{#if commentState.isGettingComments == true}
 				<CommentsSkeleton />
@@ -66,7 +66,7 @@
 	<!-- Space -->
 	<div class="h-16"></div>
 
-	<!-- Paper Count -->
+	<!-- Comment Count -->
 	<div class="text-center text-xs">
 		<span> Showing {commentState.comments.length} Comments.</span>
 	</div>

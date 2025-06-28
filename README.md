@@ -1,34 +1,32 @@
-# ScholarXIV
-
-[![ScholarXIV](https://img.shields.io/badge/Visit-ScholarXIV.com-4CAF50?style=for-the-badge&logo=google-scholar&logoColor=white&labelColor=4285F4)](https://scholarxiv.com)
+# [ScholarXIV](https://scholarxiv.com)
 
 A modern, AI-powered academic research platform that helps you discover, analyze, and interact with research papers more efficiently.
 
-🌐 [https://scholarxiv.com](https://scholarxiv.com)
+![Homepage](./static/screenshots/home.jpg)
 
-## 🚀 Features
+## Features
 
-### 🔍 Search & Discovery
+### Search & Discovery
 
 - **Smart Search** - Find relevant papers with powerful search capabilities
 - **Advanced Filters** - Refine your search with advanced filtering options
 
-### 🤖 AI-Powered Tools
+### AI-Powered Tools
 
 - **Context-Aware Chat** - Chat with an AI assistant about research papers
 - **Multi-Paper Analysis** - Select and compare multiple papers in a single chat session
 
-### 📚 Personal Library
+### Personal Library
 
 - **Save & Organize** - Like and bookmark papers for later reference
 - **Collections** - View and manage your liked and bookmarked papers
 
-### 📄 Paper Management
+### Paper Management
 
 - **In-Browser Viewing** - Read papers directly in your browser
 - **Download Options** - Download papers in PDF format
 
-## 📸 Screenshots
+## Screenshots
 
 _Screenshots coming soon!_
 
@@ -38,13 +36,13 @@ _Screenshots coming soon!_
 ![Search Results](screenshots/search.png)
 -->
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Frontend**: SvelteKit, TypeScript, Tailwind CSS
 - **Backend**: MongoDB
 - **AI**: Gemini
 
-## 🚀 Getting Started
+## Getting Started
 
 1. Clone the repository
 2. Install dependencies: `npm install`
@@ -52,14 +50,14 @@ _Screenshots coming soon!_
 4. Run the development server: `npm run dev`
 5. Open [http://localhost:5173](http://localhost:5173) in your browser
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📬 Contact
+## Contact
 
 Have questions or suggestions? Feel free to open an issue or reach out to our team.

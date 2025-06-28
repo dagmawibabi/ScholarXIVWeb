@@ -109,7 +109,7 @@
 		</div>
 
 		<!-- COMMENT -->
-		<!-- <a href="/comments/papers/{paperState.paper['extractedID']}">
+		<a href="/comments/papers/{paperState.paper['extractedID']}">
 			<div
 				class="flex w-fit items-center gap-x-1 rounded-xl border border-transparent px-2 py-1 transition-all duration-200 ease-in-out hover:bg-zinc-100 hover:text-black"
 			>
@@ -119,9 +119,9 @@
 				<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
 					<MessageCircle size={18} />
 				</div>
-				<span class="flex pl-1"> 0 </span>
+				<span class="flex pl-1"> Comments </span>
 			</div>
-		</a> -->
+		</a>
 	{/if}
 	<!-- SUMMARY -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->

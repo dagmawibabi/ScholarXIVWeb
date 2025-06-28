@@ -68,7 +68,8 @@
 						all: inputState.searchContent
 					},
 					sortBy: inputState.sortBy === 'Sort By' ? SORT_BY_DEFAULT : inputState.sortBy,
-					sortOrder: inputState.sortOrder === 'Sort Order' ? SORT_ORDER_DEFAULT : inputState.sortOrder
+					sortOrder:
+						inputState.sortOrder === 'Sort Order' ? SORT_ORDER_DEFAULT : inputState.sortOrder
 				});
 
 				// Update the paper list directly since paperListState is not a Svelte store
@@ -93,6 +94,10 @@
 
 	const session = authClient.getSession();
 </script>
+
+<svelte:head>
+	<title>ScholarXIV</title>
+</svelte:head>
 
 <div class="m-auto w-full px-3 md:w-2/3 lg:w-2/4 lg:px-0 xl:w-2/5 xl:px-0 2xl:w-2/5 2xl:px-0">
 	<!-- Title and Profile -->

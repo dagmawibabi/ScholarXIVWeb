@@ -2,7 +2,7 @@
 
 A modern, AI-powered academic research platform that helps you discover, analyze, and interact with research papers more efficiently.
 
-![Homepage](./static/screenshots/home.jpg)
+![Homepage](https://github.com/dagmawibabi/ScholarXIVWeb/blob/main/static/screenshots/photo_2025-06-28_20-20-01.jpg)
 
 ## Features
 

@@ -77,6 +77,7 @@
 				})
 			});
 			const data = await response.json();
+			console.log(data);
 			commentState.comment = '';
 			commentState.comments = data;
 			commentState.isCommenting = false;
@@ -88,6 +89,8 @@
 			event.preventDefault();
 			if (isAIMode == true) {
 				chatWithAI();
+			} else if (isCommentMode == true) {
+				commentOnPaper();
 			} else {
 				searchPaper();
 			}

@@ -55,9 +55,16 @@
 			{#if commentState.isGettingComments == true}
 				<CommentsSkeleton />
 			{:else}
-				{#each commentState.comments as eachComment}
-					<!-- <EachPaper paper={eachComment} /> -->
-					<EachComment comment={eachComment} />
+				{#each commentState.comments as eachComment (eachComment._id)}
+					<EachComment 
+						comment={eachComment} 
+						on:commentDeleted={(e) => {
+							// Remove the deleted comment from the state
+							commentState.comments = commentState.comments.filter(
+								c => c._id !== e.detail.commentId
+							);
+						}}
+					/>
 				{/each}
 			{/if}
 		</div>

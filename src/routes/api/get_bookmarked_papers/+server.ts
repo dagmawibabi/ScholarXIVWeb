@@ -11,7 +11,6 @@ export async function GET({ request }) {
 	// Get User ID
 	const session = await getSession(request);
 	const userID = session?.user.id;
-	console.log('userID', userID);
 
 	// Get User Bookmarks
 	const result = await bookmarks.find({ userID: userID }).toArray();

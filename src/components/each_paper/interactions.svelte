@@ -119,7 +119,7 @@
 				<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
 					<MessageCircle size={18} />
 				</div>
-				<span class="flex pl-1"> Comments </span>
+				<span class="hidden md:flex lg:flex xl:flex 2xl:flex"> Comments </span>
 			</div>
 		</a>
 	{/if}

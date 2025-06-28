@@ -6,6 +6,8 @@
 	import Title from '../../../components/title.svelte';
 	import { authClient } from '$lib/auth_client';
 
+	import logo from '$lib/assets/logo/logo.png';
+
 	let isLogingInWithGithub = $state(false);
 	let isLogingInWithGoogle = $state(false);
 </script>
@@ -14,7 +16,7 @@
 	<Card.Root class="-mt-56 w-full max-w-sm border-0">
 		<!-- Logo -->
 		<div class="flex justify-center">
-			<img src="/src/lib/assets/logo/logo.png" alt=" " class="h-56 w-56" />
+			<img src={logo} alt=" " class="h-56 w-56" />
 		</div>
 
 		<!-- Title -->

@@ -20,6 +20,18 @@
 	let isLogingInWithTwitter = $state(false);
 </script>
 
+<svelte:head>
+	<meta property="og:title" content="ScholarXIV" />
+	<meta property="og:description" content="Open-source & AI powered research paper explorer" />
+	<meta
+		property="og:image"
+		content="https://www.dagmawi.dev/_app/immutable/assets/ScholarXIV.BLhCS-yg.png"
+	/>
+	<meta property="og:url" content="https://scholarxiv.com" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="ScholarXIV" />
+</svelte:head>
+
 <div class="flex h-screen flex-col items-center justify-center">
 	<Card.Root class="-mt-56 w-full max-w-sm border-0">
 		<!-- Logo -->
@@ -31,30 +43,29 @@
 		<Title useAsHome={false} showTitle={true} />
 
 		<div class="mt-5 space-y-2">
-			<!-- Google Login -->
-			<Button
-				type="button"
-				class="group/google w-full"
-				onclick={async () => {
-					isLogingInWithGoogle = !isLogingInWithGoogle;
-					await authClient.signIn.social({
-						provider: 'google',
-						callbackURL: '/homepage'
-					});
-				}}
-			>
-				{#if isLogingInWithGoogle === true}
-					<Circle size="22" color="#ffffff" duration="1s" />
-				{:else}
-					<div class="flex items-center gap-x-2">
-						<img src={google} alt="" class="h-4 w-4" />
-
-						<span class="font-semibold group-hover/google:text-blue-400"> Google </span>
-					</div>
-				{/if}
-			</Button>
-
 			<div class="flex space-x-2">
+				<!-- Google Login -->
+				<Button
+					type="button"
+					class="group/google w-full"
+					onclick={async () => {
+						isLogingInWithGoogle = !isLogingInWithGoogle;
+						await authClient.signIn.social({
+							provider: 'google',
+							callbackURL: '/homepage'
+						});
+					}}
+				>
+					{#if isLogingInWithGoogle === true}
+						<Circle size="22" color="#ffffff" duration="1s" />
+					{:else}
+						<div class="flex items-center gap-x-2">
+							<img src={google} alt="" class="h-4 w-4" />
+
+							<span class="font-semibold group-hover/google:text-blue-400"> Google </span>
+						</div>
+					{/if}
+				</Button>
 				<!-- GitHub Login -->
 				<Button
 					type="button"

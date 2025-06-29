@@ -8,6 +8,15 @@
 
 <svelte:head>
 	<title>ScholarXIV</title>
+	<meta property="og:title" content="ScholarXIV" />
+	<meta property="og:description" content="Open-source & AI powered research paper explorer" />
+	<meta
+		property="og:image"
+		content="https://www.dagmawi.dev/_app/immutable/assets/ScholarXIV.BLhCS-yg.png"
+	/>
+	<meta property="og:url" content="https://scholarxiv.com" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="ScholarXIV" />
 </svelte:head>
 
 {#if $session.data}

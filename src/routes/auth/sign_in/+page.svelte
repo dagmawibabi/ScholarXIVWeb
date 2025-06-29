@@ -25,7 +25,7 @@
 	<meta property="og:description" content="Open-source & AI powered research paper explorer" />
 	<meta
 		property="og:image"
-		content="https://www.dagmawi.dev/_app/immutable/assets/ScholarXIV.BLhCS-yg.png"
+		content="https://www.dagmawi.dev/_app/immutable/assets/ScholarXIVWhite.B4NW1iV5.jpg"
 	/>
 	<meta property="og:url" content="https://scholarxiv.com" />
 	<meta property="og:type" content="website" />

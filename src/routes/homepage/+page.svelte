@@ -56,8 +56,16 @@
 		try {
 			if (inputState.lastSearch === '' || onPurpose) {
 				inputState.statusText = 'Recommended keyword';
-				inputState.searchContent =
-					suggestedPaperTitles[Math.floor(Math.random() * suggestedPaperTitles.length)];
+				// Filter out current search term to avoid repetition
+				const availableTopics = suggestedPaperTitles.filter(
+					(topic) => topic !== inputState.lastSearch
+				);
+				// If no other topics available, use current one, otherwise pick a random one from filtered list
+				const randomTopic =
+					availableTopics.length > 0
+						? availableTopics[Math.floor(Math.random() * availableTopics.length)]
+						: suggestedPaperTitles[Math.floor(Math.random() * suggestedPaperTitles.length)];
+				inputState.searchContent = randomTopic;
 				inputState.lastSearch = inputState.searchContent;
 				inputState.isSearching = true;
 

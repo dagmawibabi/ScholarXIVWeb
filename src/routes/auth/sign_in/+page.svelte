@@ -7,7 +7,7 @@
 	import { authClient } from '$lib/auth_client';
 
 	import logo from '$lib/assets/logo/logo.png';
-	import { Github, Twitter } from 'lucide-svelte';
+	import { Drama, Github, Twitter } from 'lucide-svelte';
 
 	import huggingface from '$lib/assets/icons/huggingface.png';
 	import twitter from '$lib/assets/icons/twitter.png';
@@ -18,6 +18,7 @@
 	let isLogingInWithGoogle = $state(false);
 	let isLogingInWithHuggingFace = $state(false);
 	let isLogingInWithTwitter = $state(false);
+	let isLogingInWithAnonymous = $state(false);
 </script>
 
 <svelte:head>
@@ -76,6 +77,7 @@
 						</div>
 					{/if}
 				</Button>
+
 				<!-- GitHub Login -->
 				<Button
 					type="button"
@@ -121,29 +123,51 @@
 				</Button>
 			</div>
 
-			<!-- HuggingFace Login -->
-			<Button
-				type="button"
-				class="group/huggingface w-full"
-				onclick={async () => {
-					isLogingInWithHuggingFace = !isLogingInWithHuggingFace;
-					await authClient.signIn.social({
-						provider: 'huggingface',
-						callbackURL: '/homepage'
-					});
-				}}
-			>
-				{#if isLogingInWithHuggingFace === true}
-					<Circle size="22" color="#ffffff" duration="1s" />
-				{:else}
-					<div class="flex items-center gap-x-2">
-						<img src={huggingface} alt="" class="h-4 w-4" />
-						<span class="font-semibold group-hover/huggingface:text-yellow-300">
-							Hugging Face
-						</span>
-					</div>
-				{/if}
-			</Button>
+			<div class="flex space-x-2">
+				<!-- HuggingFace Login -->
+				<Button
+					type="button"
+					class="group/huggingface w-full"
+					onclick={async () => {
+						isLogingInWithHuggingFace = !isLogingInWithHuggingFace;
+						await authClient.signIn.social({
+							provider: 'huggingface',
+							callbackURL: '/homepage'
+						});
+					}}
+				>
+					{#if isLogingInWithHuggingFace === true}
+						<Circle size="22" color="#ffffff" duration="1s" />
+					{:else}
+						<div class="flex items-center gap-x-2">
+							<img src={huggingface} alt="" class="h-4 w-4" />
+							<span class="font-semibold group-hover/huggingface:text-yellow-300">
+								Hugging Face
+							</span>
+						</div>
+					{/if}
+				</Button>
+
+				<!-- Anonymous Login -->
+				<Button
+					type="button"
+					class="group/anonymous w-full"
+					onclick={async () => {
+						isLogingInWithAnonymous = !isLogingInWithAnonymous;
+						await authClient.signIn.anonymous();
+					}}
+				>
+					{#if isLogingInWithAnonymous === true}
+						<Circle size="22" color="#ffffff" duration="1s" />
+					{:else}
+						<div class="flex items-center gap-x-2">
+							<Drama size={17} />
+							<!-- <img src={huggingface} alt="" class="h-4 w-4" /> -->
+							<span class="font-semibold"> Guest Mode </span>
+						</div>
+					{/if}
+				</Button>
+			</div>
 		</div>
 	</Card.Root>
 

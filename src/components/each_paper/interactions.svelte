@@ -78,6 +78,7 @@
 			text-xs md:justify-start lg:justify-start xl:justify-start 2xl:justify-start
 			"
 >
+	<!--  && $session.data.user.isAnonymous !== true to disable for anonymous users -->
 	{#if $session.data}
 		<!-- LIKE -->
 		<!-- svelte-ignore a11y_click_events_have_key_events -->

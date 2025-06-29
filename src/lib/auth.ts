@@ -1,4 +1,5 @@
 import { betterAuth } from 'better-auth';
+import { anonymous } from 'better-auth/plugins';
 import { mongodbAdapter } from 'better-auth/adapters/mongodb';
 import { mongoDB } from '$db/db';
 
@@ -28,5 +29,6 @@ export const auth = betterAuth({
 			clientId: process.env.TWITTER_CLIENT_ID as string,
 			clientSecret: process.env.TWITTER_CLIENT_SECRET as string
 		}
-	}
+	},
+	plugins: [anonymous()]
 });

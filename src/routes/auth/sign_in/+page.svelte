@@ -12,6 +12,7 @@
 	import huggingface from '$lib/assets/icons/huggingface.png';
 	import twitter from '$lib/assets/icons/twitter.png';
 	import google from '$lib/assets/icons/google.png';
+	import youtube from '$lib/assets/icons/youtube.png';
 
 	let isLogingInWithGithub = $state(false);
 	let isLogingInWithGoogle = $state(false);
@@ -127,4 +128,14 @@
 
 	<!-- Better Auth Remark -->
 	<BetterAuthRemark />
+
+	<!-- Demo -->
+	<div class="flex items-center gap-x-2 pt-10">
+		<img src={youtube} alt="" class="h-4" />
+		<a
+			href="https://youtu.be/-GlxZRCfxYA"
+			target="_blank"
+			class="font-sm pb-1 underline-offset-4 hover:text-blue-500 hover:underline">Demo Video</a
+		>
+	</div>
 </div>

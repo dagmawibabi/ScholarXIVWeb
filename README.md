@@ -34,7 +34,7 @@ A modern, AI-powered academic research platform that helps you discover, analyze
 
 We welcome contributions from the community! Follow these steps to contribute:
 
-1. **Fork the Repository**: Fork the Telegram Community Gallery repository to your GitHub account.
+1. **Fork the Repository**: Fork the ScholarXIV repository to your GitHub account.
 2. **Make Changes**: Create a new branch, make your changes, and commit them to your branch.
 3. **Create a Pull Request**: Once your changes are ready, create a detailed pull request (PR) explaining the changes you've made.
 4. **Review and Iterate**: Collaborate with the maintainers to review and iterate on your changes until they are ready to be merged.
@@ -44,13 +44,13 @@ For more detailed guidelines on contributing, please refer to our contribution g
 
 ## Screenshots
 
-| | |
-|--|--|
-| ![](static/screenshots/screenshot1.jpg) | ![](static/screenshots/screenshot2.jpg) |
-| ![](static/screenshots/screenshot3.jpg) | ![](static/screenshots/screenshot4.jpg) |
-| ![](static/screenshots/screenshot5.jpg) | ![](static/screenshots/screenshot6.jpg) |
-| ![](static/screenshots/screenshot7.jpg) | ![](static/screenshots/screenshot8.jpg) |
-| ![](static/screenshots/screenshot9.jpg) | ![](static/screenshots/screenshot10.jpg) |
+|                                          |                                          |
+| ---------------------------------------- | ---------------------------------------- |
+| ![](static/screenshots/screenshot1.jpg)  | ![](static/screenshots/screenshot2.jpg)  |
+| ![](static/screenshots/screenshot3.jpg)  | ![](static/screenshots/screenshot4.jpg)  |
+| ![](static/screenshots/screenshot5.jpg)  | ![](static/screenshots/screenshot6.jpg)  |
+| ![](static/screenshots/screenshot7.jpg)  | ![](static/screenshots/screenshot8.jpg)  |
+| ![](static/screenshots/screenshot9.jpg)  | ![](static/screenshots/screenshot10.jpg) |
 | ![](static/screenshots/screenshot11.jpg) | ![](static/screenshots/screenshot12.jpg) |
 
 ## License

@@ -135,7 +135,7 @@
 		<a
 			href="https://youtu.be/-GlxZRCfxYA"
 			target="_blank"
-			class="font-sm pb-1 underline-offset-4 hover:text-blue-500 hover:underline">Demo Video</a
+			class="font-sm underline-offset-4 hover:text-blue-500 hover:underline">Demo Video</a
 		>
 	</div>
 </div>

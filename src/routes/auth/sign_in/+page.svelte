@@ -175,7 +175,7 @@
 	<BetterAuthRemark />
 
 	<!-- Demo -->
-	<div class="flex items-center gap-x-2 pt-10">
+	<div class="flex items-center gap-x-2 pb-2 pt-10">
 		<img src={youtube} alt="" class="h-4" />
 		<a
 			href="https://youtu.be/-GlxZRCfxYA"
@@ -183,4 +183,16 @@
 			class="font-sm underline-offset-4 hover:text-blue-500 hover:underline">Demo Video</a
 		>
 	</div>
+
+	<a
+		href="https://www.producthunt.com/products/scholarxiv-2?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-scholarxiv&#0045;2"
+		target="_blank"
+		><img
+			src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=985666&theme=light&t=1751248793638"
+			alt="ScholarXIV - Open&#0045;source&#0032;and&#0032;AI&#0032;powered&#0032;Research | Product Hunt"
+			style="width: 200px; height: 40px;"
+			width="250"
+			height="54"
+		/></a
+	>
 </div>

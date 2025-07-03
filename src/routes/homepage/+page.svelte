@@ -69,7 +69,15 @@
 				inputState.lastSearch = inputState.searchContent;
 				inputState.isSearching = true;
 
-				const response = await axios.post('/api/search_papers', {
+				// Ensure we're in the browser before accessing window
+				if (typeof window === 'undefined') {
+					throw new Error('This function can only be called in the browser');
+				}
+
+				// Construct the full URL
+				const apiUrl = new URL('/api/search_papers', window.location.origin).toString();
+
+				const response = await axios.post(apiUrl, {
 					startIndex: inputState.startIndex,
 					maxResults: inputState.maxResults,
 					searchFilterString: {

@@ -1,9 +1,10 @@
-import { mongoDB } from '$db/db';
+import { getDb } from '$db/db';
 import { json } from '@sveltejs/kit';
 import { getSession } from '../utils/session_manager';
 import { ObjectId } from 'mongodb';
 
-const user = mongoDB.collection('user');
+const db = await getDb();
+const user = db.collection('user');
 
 export async function POST({ request }) {
 	// Get User ID

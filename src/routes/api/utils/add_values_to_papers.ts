@@ -1,11 +1,11 @@
-import { mongoDB } from '$db/db';
-
-// const papers = mongoDB.collection('papers');
-const bookmarks = mongoDB.collection('bookmarks');
-const likedPapers = mongoDB.collection('likedpapers');
+import { getDb } from '$db/db';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function addValuesToPapers(papers: any, userID: any) {
+	const db = await getDb();
+	const bookmarks = db.collection('bookmarks');
+	const likedPapers = db.collection('likedpapers');
+
 	// User Bookmarked Papers
 	const userBookmarkedPapers = await bookmarks
 		.find({ userID: userID })

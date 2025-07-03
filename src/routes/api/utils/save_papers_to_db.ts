@@ -1,8 +1,9 @@
-import { mongoDB } from '$db/db';
+import { getDb } from '$db/db';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function saveToDB(cleanedPapers: any) {
-	const papers = mongoDB.collection('papers');
+	const db = await getDb();
+	const papers = db.collection('papers');
 
 	// Retrieve all existing papers from the database once
 	const existingPapers = await papers.find({}).toArray();

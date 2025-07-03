@@ -3,12 +3,14 @@ import { json } from '@sveltejs/kit';
 import { ObjectId } from 'mongodb';
 import { addValuesToPapers } from '../utils/add_values_to_papers';
 import { getSession } from '../utils/session_manager';
-import { mongoDB } from '$db/db';
+import { getDb } from '$db/db';
 
-const papers = mongoDB.collection('papers');
 // const bookmarks = mongoDB.collection('bookmarks');
-const comments = mongoDB.collection('comments');
-const users = mongoDB.collection('user');
+
+const db = await getDb();
+const papers = db.collection('papers');
+const comments = db.collection('comments');
+const users = db.collection('user');
 
 export async function POST({ request }) {
 	const { extractedID } = await request.json();

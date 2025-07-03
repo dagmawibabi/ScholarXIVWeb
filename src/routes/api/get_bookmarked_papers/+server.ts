@@ -1,9 +1,11 @@
 // import axios from 'axios';
-import { mongoDB } from '$db/db';
+import { getDb } from '$db/db';
 import { json } from '@sveltejs/kit';
 
-const papers = mongoDB.collection('papers');
-const bookmarks = mongoDB.collection('bookmarks');
+const db = await getDb();
+const papers = db.collection('papers');
+const bookmarks = db.collection('bookmarks');
+
 import { addValuesToPapers } from '../utils/add_values_to_papers';
 import { getSession } from '../utils/session_manager';
 

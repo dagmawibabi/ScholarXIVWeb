@@ -57,11 +57,11 @@
 						<NavigationButtons icon={Compass} size={18} link={'/homepage'} />
 					{/if}
 
-					<!-- Bookmarks -->
-					<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
-
 					<!-- Liked Papers -->
 					<NavigationButtons icon={Heart} size={16} link={'/liked_papers_page'} />
+
+					<!-- Bookmarks -->
+					<NavigationButtons icon={Bookmark} size={16} link={'/bookmarks_page'} />
 				</div>
 			{/if}
 		</div>

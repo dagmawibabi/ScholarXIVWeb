@@ -25,7 +25,7 @@ export async function GET({ request }) {
 
 		// Return the API key (or null if not set)
 		return json({
-			apiKey: userDoc.apiKey || null
+			apiKey: userDoc?.apiKey ?? null
 		});
 	} catch (error) {
 		console.error('Error fetching API key:', error);

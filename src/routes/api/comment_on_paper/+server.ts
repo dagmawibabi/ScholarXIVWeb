@@ -5,8 +5,8 @@ import { ObjectId } from 'mongodb';
 
 // const papers = mongoDB.collection('papers');
 const db = await getDb();
-const comments = db.collection('comments');
 const users = db.collection('user');
+const comments = db.collection('comments');
 
 export async function POST({ request }) {
 	// Get User ID

@@ -21,13 +21,13 @@
 
 		try {
 			await fetch('/api/save_ai_api_key', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				apiKey: apiKey
-			})
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					apiKey: apiKey
+				})
 			});
 		} catch (error) {
 			console.error('Error saving API key:', error);
@@ -62,12 +62,12 @@
 	<LabelAndInputBox
 		bind:state={apiKey}
 		label=""
-		type="password"
+		type="text"
 		hasError={showEmptyError}
-		placeholder={userApiKey || 'Enter your OpenAI API key (sk-...)'}
+		placeholder={userApiKey || 'Enter your Gemini API key (Ar-...)'}
 	/>
 	{#if showEmptyError}
-		<p class="text-red-500 text-sm mt-1">Please enter an API key</p>
+		<p class="mt-1 text-sm text-red-500">Please enter an API key</p>
 	{/if}
 
 	<Dialog.Footer>

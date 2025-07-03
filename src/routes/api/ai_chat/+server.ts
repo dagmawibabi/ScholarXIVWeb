@@ -22,7 +22,8 @@ export async function POST({ request }) {
 	// Get user's API key from database
 	const userDoc = await user.findOne({ _id: new ObjectId(userID) });
 	if (!userDoc?.apiKey) {
-		aiResponse = 'No API key found. Please set your API key in settings.';
+		aiResponse =
+			'No API key found. Please set your API key in settings by clicking on the settings icon in the main input box below.';
 		return json(aiResponse);
 	}
 

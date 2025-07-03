@@ -150,9 +150,7 @@
 			<!-- Settings and AI Toggle -->
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div class="m-auto flex items-center pr-1">
-				{#if isCommentMode == false}
-					<InputSettings {isAIMode} />
-				{/if}
+				<InputSettings {isAIMode} {isCommentMode} />
 				{#if isAIMode}
 					<div
 						class="cursor-pointer rounded-full p-2 text-zinc-600 hover:bg-zinc-100 hover:text-black"

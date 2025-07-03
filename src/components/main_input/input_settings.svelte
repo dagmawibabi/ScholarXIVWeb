@@ -3,7 +3,7 @@
 	import { ScanSearch, ScanText, Settings2, SlidersHorizontal } from 'lucide-svelte';
 	import AdvancedSearch from './advanced_search.svelte';
 	import AiSettings from './ai_settings.svelte';
-	let { isAIMode } = $props();
+	let { isAIMode, isCommentMode } = $props();
 </script>
 
 <Dialog.Root>
@@ -16,7 +16,7 @@
 				<div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden">
 					<SlidersHorizontal size={19} />
 				</div>
-			{:else}
+			{:else if isCommentMode == false}
 				<div class="hidden md:flex lg:flex xl:flex 2xl:flex">
 					<ScanText size={17} />
 				</div>

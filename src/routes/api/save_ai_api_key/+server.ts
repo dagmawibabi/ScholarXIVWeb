@@ -12,6 +12,11 @@ export async function POST({ request }) {
 	const userID = session?.user.id;
 
 	const { apiKey } = await request.json();
+	
+	// Return early if apiKey is empty
+	if (!apiKey) {
+		return json({ success: true, message: 'Empty API key, no changes made' });
+	}
 
 	// Update API Key
 	if (!userID) {

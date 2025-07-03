@@ -5,13 +5,22 @@
 	import LabelAndInputBox from './label_and_input_box.svelte';
 	import { authClient } from '$lib/auth_client';
 
-	let isSavingAPIKey = $state();
-	let apiKey = $state();
+	let isSavingAPIKey = $state(false);
+	let apiKey = $state('');
+	let showEmptyError = $state(false);
 
 	async function saveAPIKey() {
+		// Validate input
+		if (!apiKey.trim()) {
+			showEmptyError = true;
+			return;
+		}
+
+		showEmptyError = false;
 		isSavingAPIKey = true;
 
-		await fetch('/api/save_ai_api_key', {
+		try {
+			await fetch('/api/save_ai_api_key', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -19,9 +28,12 @@
 			body: JSON.stringify({
 				apiKey: apiKey
 			})
-		});
-
-		isSavingAPIKey = false;
+			});
+		} catch (error) {
+			console.error('Error saving API key:', error);
+		} finally {
+			isSavingAPIKey = false;
+		}
 	}
 
 	let session = authClient.useSession();
@@ -50,8 +62,13 @@
 	<LabelAndInputBox
 		bind:state={apiKey}
 		label=""
-		placeholder={userApiKey || 'API Key ...'}
+		type="password"
+		hasError={showEmptyError}
+		placeholder={userApiKey || 'Enter your OpenAI API key (sk-...)'}
 	/>
+	{#if showEmptyError}
+		<p class="text-red-500 text-sm mt-1">Please enter an API key</p>
+	{/if}
 
 	<Dialog.Footer>
 		<div class="flex w-full gap-x-2 pt-3">

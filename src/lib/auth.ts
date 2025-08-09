@@ -20,7 +20,7 @@ const createAuth = async () => {
 				google: {
 					clientId: process.env.GOOGLE_CLIENT_ID as string,
 					clientSecret: process.env.GOOGLE_CLIENT_SECRET as string, 
-prompt: "select_account+consent"
+prompt: "select_account consent"
 				},
 				github: {
 					clientId: process.env.GITHUB_CLIENT_ID as string,
